@@ -9,15 +9,18 @@ class PokemonListRepo {
   Future<List<PokemonListModel>> getPokemonList(String url) async {
     try {
       final response = await client.get(url);
-
+      final pokemonSpecies = response.data['pokemon_species'];
+      pokemonSpecies.sort((a, b) => a['name'].toString().compareTo(b['name'].toString()));
       final pokemonList = List<PokemonListModel>.of(
-        response.data["pokemon_species"].map<PokemonListModel>(
+        pokemonSpecies.map<PokemonListModel>(
               (json) => PokemonListModel(
             pokemonName: json['name'],
             url: json['url'],
           ),
         ),
       );
+
+      print(pokemonSpecies);
 
       return pokemonList;
     } catch (e){

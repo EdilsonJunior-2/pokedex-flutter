@@ -11,8 +11,15 @@ class PokemonRepo {
   Future<PokemonModel> getPokemon(String url) async {
     try {
       final response = await client.get(url);
-      print(response.data["results"]);
-
+      final response2 = await client.get(response.data["species"]["url"]);
+      final flavorTextEntries = response2.data["flavor_text_entries"]
+          .where((i) => i['language']['name'] == 'en')
+          .toList();
+      final imageUrl = response.data['sprites']['other']['official-artwork']
+          ['front_default'];
+      final spriteUrl = response.data['sprites']['front_default'];
+      final spriteUrlShiny = response.data['sprites']['front_shiny'];
+      flavorTextEntries.shuffle();
       final abilities = List<AbilitiesModel>.of(
         response.data["abilities"].map<AbilitiesModel>(
           (json) => AbilitiesModel(
@@ -45,6 +52,11 @@ class PokemonRepo {
         abilities: abilities,
         moves: moves,
         types: types,
+        spriteUrl: spriteUrl,
+        spriteUrlShiny: spriteUrlShiny,
+        imageUrl: imageUrl,
+        flavorTextEntry:
+            flavorTextEntries[0]['flavor_text'].replaceAll("\n", " "),
       );
 
       return pokemon;

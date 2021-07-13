@@ -8,10 +8,18 @@ class PokemonModel {
     required this.abilities,
     required this.moves,
     required this.types,
+    required this.spriteUrl,
+    required this.spriteUrlShiny,
+    required this.imageUrl,
+    required this.flavorTextEntry,
   });
 
   final String pokemonName;
   final List<AbilitiesModel> abilities;
   final List<MoveListModel> moves;
   final List<TypeListModel> types;
+  final String spriteUrl;
+  final String spriteUrlShiny;
+  final String imageUrl;
+  final String flavorTextEntry;
 }

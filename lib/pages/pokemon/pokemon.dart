@@ -24,11 +24,10 @@ class _PokemonState extends State<Pokemon> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text(widget.name)),
+      appBar: AppBar(title: Text(widget.name)),
       body: BlocProvider<PokemonCubit>(
-        create: (context) =>
-            PokemonCubit(repository: PokemonRepo())..getPokemon('https://pokeapi.co/api/v2/pokemon/${widget.name}'),
+        create: (context) => PokemonCubit(repository: PokemonRepo())
+          ..getPokemon('https://pokeapi.co/api/v2/pokemon/${widget.name}'),
         child: SingleChildScrollView(
           child: BlocBuilder<PokemonCubit, StateClass>(
             builder: (context, state) {
@@ -54,6 +53,47 @@ class _PokemonState extends State<Pokemon> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
+                        Image.network(
+                          pokemon.imageUrl,
+                          width: 140,
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(
+                            left: 20.0,
+                            right: 20.0,
+                            top: 20.0,
+                            bottom: 20.0,
+                          ),
+                          child: Text(
+                            pokemon.flavorTextEntry,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: returnColor(
+                                pokemon.types[0].name,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Text('Default'),
+                            Text('Shiny'),
+                          ],
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Image.network(
+                              pokemon.spriteUrl,
+                              width: 100,
+                            ),
+                            Image.network(
+                              pokemon.spriteUrlShiny,
+                              width: 100,
+                            ),
+                          ],
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        ),
                         Container(
                           margin: const EdgeInsets.only(
                               left: 20.0, right: 20.0, top: 20.0),
@@ -96,8 +136,9 @@ class _PokemonState extends State<Pokemon> {
                                 child: Text(
                                   pokemon.types[index].name,
                                   style: TextStyle(
-                                    color:
-                                        returnColor(pokemon.types[index].name),
+                                    color: returnColor(
+                                      pokemon.types[index].name,
+                                    ),
                                   ),
                                 ),
                               ),
