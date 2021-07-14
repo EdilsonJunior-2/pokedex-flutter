@@ -34,17 +34,34 @@ class _PokemonState extends State<Pokemon> {
                 return loading(context);
               } else if (state is ErrorState) {
                 return Center(
-                  child: Text(
-                    "There is no info about this pokemon in our database, sorry :(",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 20.0,
-                    ),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          IconButton(
+                            icon: const Icon(
+                              Icons.arrow_back,
+                            ),
+                            color: Colors.black,
+                            onPressed: () => {
+                              Navigator.pop(context),
+                            },
+                          ),
+                        ],
+                      ),
+                      Text(
+                        "There is no info about this pokemon in our database, sorry :(",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 20.0,
+                        ),
+                      ),
+                    ],
                   ),
                 );
               } else if (state is LoadedStatePokemon) {
                 final pokemon = state.element;
-                print(pokemon.pokemonName);
                 return Center(
                   child: Container(
                     margin: const EdgeInsets.only(
