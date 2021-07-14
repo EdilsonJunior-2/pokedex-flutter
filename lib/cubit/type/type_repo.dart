@@ -79,10 +79,12 @@ class TypeRepo {
       );
 
       final pokemon = List<PokemonListModel>.of(
-        response.data['pokemon'].map<PokemonListModel>((json) => PokemonListModel(
-              pokemonName: json['pokemon']['name'],
-              url: json['pokemon']['url'],
-            )),
+        response.data['pokemon'].map<PokemonListModel>(
+          (json) => PokemonListModel(
+            pokemonName: json['pokemon']['name'],
+            url: json['pokemon']['url'],
+          ),
+        ),
       );
 
       final type = TypeModel(

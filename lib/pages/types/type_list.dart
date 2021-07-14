@@ -58,7 +58,7 @@ class _TypeListPageState extends State<TypeListPage> {
                   child: Center(
                     child: Container(
                       margin: const EdgeInsets.only(top: 20.0, bottom: 20.0),
-                      width: MediaQuery.of(context).size.width * 0.5,
+                      width: MediaQuery.of(context).size.width * 0.7,
                       child: GridView.builder(
                         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                             maxCrossAxisExtent: 100,

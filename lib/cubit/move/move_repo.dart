@@ -48,7 +48,6 @@ class MoveRepo {
 
       return move;
     } catch (e) {
-      print(e);
       throw e;
     }
   }

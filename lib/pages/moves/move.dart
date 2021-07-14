@@ -45,7 +45,6 @@ class _MoveState extends State<Move> {
               if (state is LoadingState) {
                 return loading(context);
               } else if (state is ErrorState) {
-                print('fuck this sh*t');
                 return Center(
                   child: Text(
                     "An error occurred while getting the info about this move, or there is no info about it, sorry :(",

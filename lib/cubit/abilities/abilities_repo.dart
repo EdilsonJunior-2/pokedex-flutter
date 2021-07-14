@@ -9,9 +9,11 @@ class AbilitiesRepo {
   Future<List<AbilitiesModel>> getAbilities(String url) async {
     try {
       final response = await client.get(url);
+      final abilitiesList = response.data["results"];
+      abilitiesList.sort((a, b) => a['name'].toString().compareTo(b['name'].toString()));
 
       final abilities = List<AbilitiesModel>.of(
-        response.data["results"].map<AbilitiesModel>(
+        abilitiesList.map<AbilitiesModel>(
               (json) => AbilitiesModel(
                 name: json['name'],
                 url: json['url'],

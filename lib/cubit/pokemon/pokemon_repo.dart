@@ -11,17 +11,25 @@ class PokemonRepo {
   Future<PokemonModel> getPokemon(String url) async {
     try {
       final response = await client.get(url);
-      final response2 = await client.get(response.data["species"]["url"]);
-      final flavorTextEntries = response2.data["flavor_text_entries"]
+      final response2 =
+          await client.get(response.data["varieties"][0]["pokemon"]["url"]);
+
+      final imageUrl = response2.data['sprites']['other']['official-artwork']
+          ['front_default'];
+
+      final spriteUrl = response2.data['sprites']['front_default'];
+
+      final spriteUrlShiny = response2.data['sprites']['front_shiny'];
+
+      final flavorTextEntries = response.data["flavor_text_entries"]
           .where((i) => i['language']['name'] == 'en')
           .toList();
-      final imageUrl = response.data['sprites']['other']['official-artwork']
-          ['front_default'];
-      final spriteUrl = response.data['sprites']['front_default'];
-      final spriteUrlShiny = response.data['sprites']['front_shiny'];
       flavorTextEntries.shuffle();
+      final finalFlavorText =
+          flavorTextEntries[0]['flavor_text'].toString().replaceAll("\n", " ");
+
       final abilities = List<AbilitiesModel>.of(
-        response.data["abilities"].map<AbilitiesModel>(
+        response2.data["abilities"].map<AbilitiesModel>(
           (json) => AbilitiesModel(
             name: json['ability']['name'],
             url: json['ability']['url'],
@@ -30,7 +38,7 @@ class PokemonRepo {
       );
 
       final moves = List<MoveListModel>.of(
-        response.data['moves'].map<MoveListModel>(
+        response2.data['moves'].map<MoveListModel>(
           (json) => MoveListModel(
             name: json['move']['name'],
             url: json['move']['url'],
@@ -39,7 +47,7 @@ class PokemonRepo {
       );
 
       final types = List<TypeListModel>.of(
-        response.data['types'].map<TypeListModel>(
+        response2.data['types'].map<TypeListModel>(
           (json) => TypeListModel(
             name: json['type']['name'],
             url: json['type']['url'],
@@ -48,20 +56,18 @@ class PokemonRepo {
       );
 
       final pokemon = PokemonModel(
-        pokemonName: response.data['name'],
+        pokemonName: response2.data['name'],
         abilities: abilities,
         moves: moves,
         types: types,
         spriteUrl: spriteUrl,
         spriteUrlShiny: spriteUrlShiny,
         imageUrl: imageUrl,
-        flavorTextEntry:
-            flavorTextEntries[0]['flavor_text'].replaceAll("\n", " "),
+        flavorTextEntry: finalFlavorText,
       );
 
       return pokemon;
     } catch (e) {
-      print(e);
       throw e;
     }
   }

@@ -44,7 +44,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 backgroundColor: Color(0xFFA8A878),
               ),
               onPressed: () {
-                print("types");
                 Navigator.pushNamed(context, '/types');
               },
             ),
@@ -60,7 +59,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 backgroundColor: Color(0xFF78C850),
               ),
               onPressed: () {
-                print("types");
                 Navigator.pushNamed(context, '/abilities');
               },
             ),

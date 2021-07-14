@@ -24,10 +24,9 @@ class _PokemonState extends State<Pokemon> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.name)),
       body: BlocProvider<PokemonCubit>(
-        create: (context) => PokemonCubit(repository: PokemonRepo())
-          ..getPokemon('https://pokeapi.co/api/v2/pokemon/${widget.name}'),
+        create: (context) =>
+            PokemonCubit(repository: PokemonRepo())..getPokemon(widget.url),
         child: SingleChildScrollView(
           child: BlocBuilder<PokemonCubit, StateClass>(
             builder: (context, state) {
@@ -45,6 +44,7 @@ class _PokemonState extends State<Pokemon> {
                 );
               } else if (state is LoadedStatePokemon) {
                 final pokemon = state.element;
+                print(pokemon.pokemonName);
                 return Center(
                   child: Container(
                     margin: const EdgeInsets.only(
@@ -53,9 +53,97 @@ class _PokemonState extends State<Pokemon> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        Image.network(
-                          pokemon.imageUrl,
-                          width: 140,
+                        Container(
+                          margin: const EdgeInsets.only(
+                            bottom: 10,
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.1,
+                                child: IconButton(
+                                  icon: const Icon(
+                                    Icons.arrow_back,
+                                  ),
+                                  color: returnColor(
+                                    pokemon.types[0].name,
+                                  ),
+                                  onPressed: () => {
+                                    Navigator.pop(context),
+                                  },
+                                ),
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.7,
+                                alignment: Alignment.center,
+                                child: Text(
+                                  pokemon.pokemonName,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: returnColor(
+                                      pokemon.types[0].name,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            Container(
+                              height: (pokemon.types.length * 42 + 40),
+                              constraints: BoxConstraints(
+                                maxHeight: 124,
+                              ),
+                              width: MediaQuery.of(context).size.width * 0.3,
+                              color: Colors.transparent,
+                              padding:
+                                  const EdgeInsets.only(top: 20, bottom: 20),
+                              margin:
+                                  const EdgeInsets.only(top: 20.0, bottom: 20),
+                              child: ListView.builder(
+                                itemCount: pokemon.types.length,
+                                itemBuilder: (context, index) => Container(
+                                  height: 42,
+                                  child: TextButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Type(
+                                            url: pokemon.types[index].url,
+                                            name: pokemon.types[index].name,
+                                            color: returnColor(
+                                              pokemon.types[index].name,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                    child: Text(
+                                      pokemon.types[index].name,
+                                      style: TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold,
+                                        color: returnColor(
+                                          pokemon.types[index].name,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Image.network(
+                              pokemon.imageUrl,
+                              width: 120,
+                            ),
+                          ],
                         ),
                         Container(
                           margin: const EdgeInsets.only(
@@ -68,6 +156,7 @@ class _PokemonState extends State<Pokemon> {
                             pokemon.flavorTextEntry,
                             textAlign: TextAlign.center,
                             style: TextStyle(
+                              fontWeight: FontWeight.bold,
                               color: returnColor(
                                 pokemon.types[0].name,
                               ),
@@ -76,8 +165,18 @@ class _PokemonState extends State<Pokemon> {
                         ),
                         Row(
                           children: <Widget>[
-                            Text('Default'),
-                            Text('Shiny'),
+                            Text(
+                              'Default',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              'Shiny',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ],
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         ),
@@ -95,136 +194,134 @@ class _PokemonState extends State<Pokemon> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         ),
                         Container(
-                          margin: const EdgeInsets.only(
-                              left: 20.0, right: 20.0, top: 20.0),
-                          child: Text(
-                            "Types:",
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                              fontSize: 20.0,
-                            ),
+                          margin: EdgeInsets.only(
+                            bottom: 30,
                           ),
-                        ),
-                        Container(
-                          height: (pokemon.types.length * 42 + 40),
-                          constraints: BoxConstraints(
-                            maxHeight: 124,
-                          ),
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          color: Colors.white,
-                          padding: const EdgeInsets.only(top: 20, bottom: 20),
-                          margin: const EdgeInsets.only(top: 20.0, bottom: 20),
-                          child: ListView.builder(
-                            itemCount: pokemon.types.length,
-                            itemBuilder: (context, index) => Container(
-                              height: 42,
-                              child: TextButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => Type(
-                                        url: pokemon.types[index].url,
-                                        name: pokemon.types[index].name,
-                                        color: returnColor(
-                                          pokemon.types[index].name,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Column(
+                                children: <Widget>[
+                                  Container(
+                                    padding: const EdgeInsets.only(
+                                      top: 20,
+                                    ),
+                                    child: Text(
+                                      "Moves:",
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        fontSize: 15.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    height: (pokemon.moves.length * 42 + 40),
+                                    constraints: BoxConstraints(
+                                      maxHeight: 250,
+                                    ),
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.4,
+                                    color: Colors.white,
+                                    padding: const EdgeInsets.only(
+                                      top: 20,
+                                      bottom: 20,
+                                    ),
+                                    margin: const EdgeInsets.only(top: 20.0),
+                                    child: ListView.builder(
+                                      itemCount: pokemon.moves.length,
+                                      itemBuilder: (context, index) => Container(
+                                        height: 42,
+                                        child: TextButton(
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) => Move(
+                                                  url: pokemon.moves[index].url,
+                                                  name: pokemon.moves[index].name,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          child: Text(
+                                            pokemon.moves[index].name,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: returnColor(
+                                                pokemon.types[0].name,
+                                              ),
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  );
-                                },
-                                child: Text(
-                                  pokemon.types[index].name,
-                                  style: TextStyle(
-                                    color: returnColor(
-                                      pokemon.types[index].name,
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                children: <Widget>[
+                                  Container(
+                                    padding: const EdgeInsets.only(
+                                      top: 20,
+                                    ),
+                                    child: Text(
+                                      "Abilities:",
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                        fontSize: 15.0,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(
-                              left: 20.0, right: 20.0, top: 20.0),
-                          child: Text(
-                            "Moves:",
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                              fontSize: 20.0,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          height: (pokemon.moves.length * 42 + 40),
-                          constraints: BoxConstraints(
-                            maxHeight: 250,
-                          ),
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          color: Colors.white,
-                          padding: const EdgeInsets.only(top: 20, bottom: 20),
-                          margin: const EdgeInsets.only(top: 20.0),
-                          child: ListView.builder(
-                            itemCount: pokemon.moves.length,
-                            itemBuilder: (context, index) => Container(
-                              height: 42,
-                              child: TextButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => Move(
-                                        url: pokemon.moves[index].url,
-                                        name: pokemon.moves[index].name,
+                                  Container(
+                                    height: (pokemon.abilities.length * 42 + 40),
+                                    constraints: BoxConstraints(
+                                      maxHeight: 250,
+                                    ),
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.4,
+                                    color: Colors.white,
+                                    padding: const EdgeInsets.only(
+                                      top: 20,
+                                      bottom: 20,
+                                    ),
+                                    margin: const EdgeInsets.only(top: 20.0),
+                                    child: ListView.builder(
+                                      itemCount: pokemon.abilities.length,
+                                      itemBuilder: (context, index) => Container(
+                                        height: 42,
+                                        child: TextButton(
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) => Ability(
+                                                  url: pokemon
+                                                      .abilities[index].url,
+                                                  name: pokemon
+                                                      .abilities[index].name,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          child: Text(
+                                            pokemon.abilities[index].name,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: returnColor(
+                                                pokemon.types[0].name,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  );
-                                },
-                                child: Text(pokemon.moves[index].name),
+                                  ),
+                                ],
                               ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(
-                              left: 20.0, right: 20.0, top: 20.0),
-                          child: Text(
-                            "Abilities:",
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                              fontSize: 20.0,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          height: (pokemon.abilities.length * 42 + 40),
-                          constraints: BoxConstraints(
-                            maxHeight: 250,
-                          ),
-                          width: MediaQuery.of(context).size.width * 0.5,
-                          color: Colors.white,
-                          padding: const EdgeInsets.only(top: 20, bottom: 20),
-                          margin: const EdgeInsets.only(top: 20.0),
-                          child: ListView.builder(
-                            itemCount: pokemon.abilities.length,
-                            itemBuilder: (context, index) => Container(
-                              height: 42,
-                              child: TextButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => Ability(
-                                        url: pokemon.abilities[index].url,
-                                        name: pokemon.abilities[index].name,
-                                      ),
-                                    ),
-                                  );
-                                },
-                                child: Text(pokemon.abilities[index].name),
-                              ),
-                            ),
+                            ],
                           ),
                         ),
                       ],

@@ -11,7 +11,6 @@ class MoveCubit extends Cubit<StateClass> {
     try {
       emit(LoadingState());
       final move = await repository.getMove(url);
-      print(move);
       emit(LoadedStateMove(move));
     } catch (e) {
       emit(ErrorState());
