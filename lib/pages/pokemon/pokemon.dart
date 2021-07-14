@@ -109,20 +109,32 @@ class _PokemonState extends State<Pokemon> {
                             ],
                           ),
                         ),
-                        Row(
+                        Container(
+                          height: 1,
+                          width: MediaQuery.of(context).size.width * 0.95,
+                          margin: EdgeInsets.only(
+                            bottom: 20,
+                          ),
+                          color: returnColor(
+                            pokemon.types[0].name,
+                          ),
+                        ),
+                        Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
+                            Image.network(
+                              pokemon.imageUrl,
+                              width: 120,
+                            ),
                             Container(
-                              height: (pokemon.types.length * 42 + 40),
+                              height: (pokemon.types.length * 42),
                               constraints: BoxConstraints(
                                 maxHeight: 124,
                               ),
                               width: MediaQuery.of(context).size.width * 0.3,
                               color: Colors.transparent,
-                              padding:
-                                  const EdgeInsets.only(top: 20, bottom: 20),
                               margin:
-                                  const EdgeInsets.only(top: 20.0, bottom: 20),
+                                  const EdgeInsets.only(top: 20.0,),
                               child: ListView.builder(
                                 itemCount: pokemon.types.length,
                                 itemBuilder: (context, index) => Container(
@@ -156,18 +168,14 @@ class _PokemonState extends State<Pokemon> {
                                 ),
                               ),
                             ),
-                            Image.network(
-                              pokemon.imageUrl,
-                              width: 120,
-                            ),
                           ],
                         ),
                         Container(
                           margin: const EdgeInsets.only(
                             left: 20.0,
                             right: 20.0,
-                            top: 20.0,
-                            bottom: 20.0,
+                            bottom: 20,
+                            top: 20,
                           ),
                           child: Text(
                             pokemon.flavorTextEntry,
@@ -248,7 +256,8 @@ class _PokemonState extends State<Pokemon> {
                                     margin: const EdgeInsets.only(top: 20.0),
                                     child: ListView.builder(
                                       itemCount: pokemon.moves.length,
-                                      itemBuilder: (context, index) => Container(
+                                      itemBuilder: (context, index) =>
+                                          Container(
                                         height: 42,
                                         child: TextButton(
                                           onPressed: () {
@@ -257,7 +266,8 @@ class _PokemonState extends State<Pokemon> {
                                               MaterialPageRoute(
                                                 builder: (context) => Move(
                                                   url: pokemon.moves[index].url,
-                                                  name: pokemon.moves[index].name,
+                                                  name:
+                                                      pokemon.moves[index].name,
                                                 ),
                                               ),
                                             );
@@ -293,7 +303,8 @@ class _PokemonState extends State<Pokemon> {
                                     ),
                                   ),
                                   Container(
-                                    height: (pokemon.abilities.length * 42 + 40),
+                                    height:
+                                        (pokemon.abilities.length * 42 + 40),
                                     constraints: BoxConstraints(
                                       maxHeight: 250,
                                     ),
@@ -307,7 +318,8 @@ class _PokemonState extends State<Pokemon> {
                                     margin: const EdgeInsets.only(top: 20.0),
                                     child: ListView.builder(
                                       itemCount: pokemon.abilities.length,
-                                      itemBuilder: (context, index) => Container(
+                                      itemBuilder: (context, index) =>
+                                          Container(
                                         height: 42,
                                         child: TextButton(
                                           onPressed: () {
