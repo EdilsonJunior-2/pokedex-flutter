@@ -61,7 +61,7 @@ class _TypeListPageState extends State<TypeListPage> {
                       width: MediaQuery.of(context).size.width * 0.7,
                       child: GridView.builder(
                         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                            maxCrossAxisExtent: 100,
+                            maxCrossAxisExtent: 120,
                             childAspectRatio: 5 / 2,
                             crossAxisSpacing: 20,
                             mainAxisSpacing: 20,

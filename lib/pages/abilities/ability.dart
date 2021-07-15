@@ -5,6 +5,8 @@ import 'package:pokedex/pages/pokemon/pokemon.dart';
 import 'package:pokedex/cubit/state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/functions.dart';
+import 'package:pokedex/pages/generation_colors.dart';
+import 'package:pokedex/pages/type_colors.dart';
 
 class Ability extends StatefulWidget {
   Ability({Key? key, required this.url, required this.name}) : super(key: key);
@@ -20,10 +22,6 @@ class _AbilityState extends State<Ability> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.name),
-        backgroundColor: Color(0xFF78C850),
-      ),
       body: BlocProvider<AbilityCubit>(
         create: (context) =>
             AbilityCubit(repository: AbilityRepo())..getAbility(widget.url),
@@ -51,7 +49,7 @@ class _AbilityState extends State<Ability> {
                 final ability = state.element;
                 return Container(
                   margin: const EdgeInsets.only(
-                    top: 40,
+                    top: 35,
                     left: 20,
                     right: 20,
                     bottom: 20,
@@ -60,12 +58,64 @@ class _AbilityState extends State<Ability> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
+                        Container(
+                          margin: const EdgeInsets.only(
+                            bottom: 10,
+                          ),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.1,
+                                child: IconButton(
+                                  icon: const Icon(
+                                    Icons.arrow_back,
+                                  ),
+                                  color: returnColorByGeneration(
+                                    ability.generation,
+                                  ),
+                                  onPressed: () => {
+                                    Navigator.pop(context),
+                                  },
+                                ),
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.7,
+                                alignment: Alignment.center,
+                                child: Text(
+                                  widget.name,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: returnColorByGeneration(
+                                      ability.generation,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: 1,
+                          width: MediaQuery.of(context).size.width * 0.95,
+                          margin: EdgeInsets.only(
+                            bottom: 20,
+                          ),
+                          color: returnColorByGeneration(
+                            ability.generation,
+                          ),
+                        ),
                         Text(
                           ability.description,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 17,
                             fontWeight: FontWeight.bold,
+                            color: returnColorByGeneration(
+                              ability.generation,
+                            ),
                           ),
                         ),
                         Container(
@@ -75,8 +125,11 @@ class _AbilityState extends State<Ability> {
                             "Pokemon that might have this ability:",
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 17,
                               fontWeight: FontWeight.bold,
+                              color: returnColorByGeneration(
+                                ability.generation,
+                              ),
                             ),
                           ),
                         ),
@@ -107,7 +160,14 @@ class _AbilityState extends State<Ability> {
                                   );
                                 },
                                 child: Text(
-                                    ability.listOfPokemon[index].pokemonName),
+                                  ability.listOfPokemon[index].pokemonName,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: returnColorByGeneration(
+                                      ability.generation,
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
                           ),

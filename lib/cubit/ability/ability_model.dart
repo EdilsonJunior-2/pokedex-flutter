@@ -5,9 +5,11 @@ class AbilityModel {
     required this.name,
     required this.description,
     required this.listOfPokemon,
+    required this.generation,
   });
 
   final String name;
   final String description;
   final List<PokemonListModel> listOfPokemon;
+  final String generation;
 }

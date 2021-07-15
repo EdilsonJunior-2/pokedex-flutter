@@ -19,10 +19,16 @@ class AbilityRepo {
         ),
       );
 
+      final descriptionList = response.data["effect_entries"]
+          .where((i) => i['language']['name'] == 'en')
+          .toList();
+      descriptionList.shuffle();
+
       final ability = AbilityModel(
         name: response.data['name'],
-        description: response.data['effect_entries'][1]['effect'],
-        listOfPokemon: pokemonList
+        description: descriptionList[0]['effect'].toString().replaceAll("\n", " "),
+        listOfPokemon: pokemonList,
+        generation: response.data['generation']['name'],
       );
 
       return ability;

@@ -3,6 +3,7 @@ import 'package:pokedex/cubit/pokemon/pokemon_model.dart';
 import 'package:pokedex/cubit/move_list/move_list_model.dart';
 import 'package:pokedex/cubit/abilities/abilities_model.dart';
 import 'package:pokedex/cubit/type_list/type_list_model.dart';
+import 'package:pokedex/cubit/stats/stats_model.dart';
 
 class PokemonRepo {
   PokemonRepo();
@@ -10,9 +11,20 @@ class PokemonRepo {
 
   Future<PokemonModel> getPokemon(String url) async {
     try {
-      final response = await client.get(url);
-      final response2 =
-          await client.get(response.data["varieties"][0]["pokemon"]["url"]);
+      var temporaryResponse1 = await client.get(url);
+      var temporaryResponse2;
+      if (temporaryResponse1.data["varieties"] != null) {
+        temporaryResponse2 = await client
+            .get(temporaryResponse1.data["varieties"][0]["pokemon"]["url"]);
+      } else {
+        temporaryResponse2 =
+            await client.get(temporaryResponse1.data["species"]["url"]);
+        var aux = temporaryResponse2;
+        temporaryResponse2 = temporaryResponse1;
+        temporaryResponse1 = aux;
+      }
+      final response = temporaryResponse1;
+      final response2 = temporaryResponse2;
 
       final imageUrl = response2.data['sprites']['other']['official-artwork']
           ['front_default'];
@@ -36,6 +48,7 @@ class PokemonRepo {
           ),
         ),
       );
+      abilities.sort((a, b) => a.name.toString().compareTo(b.name.toString()));
 
       final moves = List<MoveListModel>.of(
         response2.data['moves'].map<MoveListModel>(
@@ -45,12 +58,23 @@ class PokemonRepo {
           ),
         ),
       );
+      moves.sort((a, b) => a.name.toString().compareTo(b.name.toString()));
 
       final types = List<TypeListModel>.of(
         response2.data['types'].map<TypeListModel>(
           (json) => TypeListModel(
             name: json['type']['name'],
             url: json['type']['url'],
+          ),
+        ),
+      );
+      types.sort((a, b) => a.name.toString().compareTo(b.name.toString()));
+
+      final stats = List<StatsModel>.of(
+        response2.data['stats'].map<StatsModel>(
+          (json) => StatsModel(
+            name: json['stat']['name'],
+            value: json['base_stat'],
           ),
         ),
       );
@@ -64,6 +88,7 @@ class PokemonRepo {
         spriteUrlShiny: spriteUrlShiny,
         imageUrl: imageUrl,
         flavorTextEntry: finalFlavorText,
+        stats: stats,
       );
 
       return pokemon;

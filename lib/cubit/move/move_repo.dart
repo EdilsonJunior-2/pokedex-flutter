@@ -20,8 +20,10 @@ class MoveRepo {
         ),
       );
 
-      final description =
-          response.data['flavor_text_entries'][1]['flavor_text'];
+      final description = response.data['flavor_text_entries']
+          .where((i) => i['language']['name'] == 'en')
+          .toList();
+      description.shuffle();
 
       final effect = response.data['effect_entries'][0]['effect'];
 
@@ -38,8 +40,8 @@ class MoveRepo {
 
       final move = MoveModel(
         pokemon: pokemon,
-        description: description,
-        effect: effect,
+        description: description[0]['flavor_text'].toString().replaceAll("\n", " "),
+        effect: effect.toString().replaceAll("\n", " "),
         pp: pp,
         power: power,
         damageClass: damageClass,

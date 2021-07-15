@@ -32,15 +32,6 @@ class _PokemonListGenerationPageState extends State<PokemonListGenerationPage> {
       appBar: AppBar(
         backgroundColor: widget.color,
         title: Text(widget.generation),
-        /*actions: <Widget>[
-          IconButton(
-            onPressed: () {
-            },
-            icon: Container(
-                child: Icon(Icons.search)
-            ),
-          ),
-        ],*/
       ),
       body: Column(
         children: <Widget>[

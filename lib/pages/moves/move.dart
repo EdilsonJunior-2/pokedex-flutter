@@ -20,7 +20,6 @@ class Move extends StatefulWidget {
 }
 
 class _MoveState extends State<Move> {
-
   textStyle(moveName) {
     return TextStyle(
       fontSize: 15,
@@ -32,10 +31,6 @@ class _MoveState extends State<Move> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.name),
-        backgroundColor: Color(0xFF705898),
-      ),
       body: BlocProvider<MoveCubit>(
         create: (context) =>
             MoveCubit(repository: MoveRepo())..getMove(widget.url),
@@ -65,23 +60,95 @@ class _MoveState extends State<Move> {
                         minHeight: MediaQuery.of(context).size.height * 0.5,
                       ),
                       margin: const EdgeInsets.only(
-                        top: 20,
+                        top: 35,
                         bottom: 20,
                         left: 20,
                         right: 20,
                       ),
                       child: Column(
                         children: <Widget>[
+                          Container(
+                            margin: const EdgeInsets.only(
+                              bottom: 10,
+                            ),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.1,
+                                  child: IconButton(
+                                    icon: const Icon(
+                                      Icons.arrow_back,
+                                    ),
+                                    color: returnColor(
+                                      move.type.name,
+                                    ),
+                                    onPressed: () => {
+                                      Navigator.pop(context),
+                                    },
+                                  ),
+                                ),
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.7,
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    widget.name,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: returnColor(
+                                        move.type.name,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            height: 1,
+                            width: MediaQuery.of(context).size.width * 0.95,
+                            margin: EdgeInsets.only(
+                              bottom: 20,
+                            ),
+                            color: returnColor(
+                              move.type.name,
+                            ),
+                          ),
                           Text(
                             move.description,
                             textAlign: TextAlign.center,
-                            style: textStyle(move.type.name),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: returnColor(
+                                  move.type.name,
+                                )
+                            ),
                           ),
-                          Container(margin: const EdgeInsets.all(10)),
+                          Container(margin: const EdgeInsets.all(10),),
                           Text(
                             "Effect: ${move.effect}",
                             textAlign: TextAlign.center,
-                            style: textStyle(move.type.name),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              color: returnColor(
+                                move.type.name,
+                              )
+                            ),
+                          ),
+                          Container(margin: const EdgeInsets.all(10),),
+                          Container(
+                            height: 1,
+                            width: MediaQuery.of(context).size.width * 0.95,
+                            margin: EdgeInsets.only(
+                              bottom: 20,
+                            ),
+                            color: returnColor(
+                              move.type.name,
+                            ),
                           ),
                           TextButton(
                             onPressed: () {
@@ -107,7 +174,7 @@ class _MoveState extends State<Move> {
                             textAlign: TextAlign.center,
                             style: textStyle(move.type.name),
                           ),
-                          Container(margin: const EdgeInsets.all(10)),
+                          Container(margin: const EdgeInsets.all(10),),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
@@ -123,7 +190,19 @@ class _MoveState extends State<Move> {
                               ),
                             ],
                           ),
-                          Container(margin: const EdgeInsets.all(10)),
+                          Container(
+                            margin: const EdgeInsets.all(10),
+                          ),
+                          Container(
+                            height: 1,
+                            width: MediaQuery.of(context).size.width * 0.95,
+                            margin: EdgeInsets.only(
+                              bottom: 20,
+                            ),
+                            color: returnColor(
+                              move.type.name,
+                            ),
+                          ),
                           Column(
                             children: <Widget>[
                               Text(
@@ -172,7 +251,8 @@ class _MoveState extends State<Move> {
                                       child: Text(
                                         move.pokemon[index].pokemonName,
                                         style: TextStyle(
-                                          color: returnColor(move.type.name),
+                                          fontWeight: FontWeight.bold,
+                                          color: returnColor(move.type.name,),
                                         ),
                                       ),
                                     ),

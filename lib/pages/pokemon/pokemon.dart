@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex/cubit/pokemon/pokemon_cubit.dart';
 import 'package:pokedex/cubit/pokemon/pokemon_repo.dart';
@@ -63,6 +62,7 @@ class _PokemonState extends State<Pokemon> {
                 );
               } else if (state is LoadedStatePokemon) {
                 final pokemon = state.element;
+                final statsOrder = [0, 5, 1, 2, 3, 4];
                 return Container(
                   margin:
                       const EdgeInsets.only(left: 20.0, right: 20.0, top: 35.0),
@@ -158,6 +158,56 @@ class _PokemonState extends State<Pokemon> {
                                   ),
                                 ),
                               ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: 126,
+                        child: ListView.builder(
+                          itemCount: 3,
+                          padding: EdgeInsets.all(0),
+                          itemBuilder: (context, index) => Container(
+                            height: 42,
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.38,
+                                  margin: const EdgeInsets.only(
+                                    right: 10,
+                                  ),
+                                  child: Text(
+                                    ("${pokemon.stats[statsOrder[2 * index]].name}: ${pokemon.stats[statsOrder[2 * index]].value}"),
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: returnColor(
+                                        pokemon.types[0].name,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.38,
+                                  margin: const EdgeInsets.only(
+                                    left: 10,
+                                  ),
+                                  child: Text(
+                                    ("${pokemon.stats[statsOrder[2 * index + 1]].name}: ${pokemon.stats[statsOrder[2 * index + 1]].value}"),
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: returnColor(
+                                        pokemon.types[0].name,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -271,6 +321,7 @@ class _PokemonState extends State<Pokemon> {
                                           pokemon.moves[index].name,
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
+                                            fontWeight: FontWeight.bold,
                                             color: returnColor(
                                                 pokemon.types[0].name),
                                           ),
