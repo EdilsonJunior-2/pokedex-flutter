@@ -25,10 +25,6 @@ class _TypeState extends State<Type> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.name),
-        backgroundColor: widget.color,
-      ),
       body: BlocProvider<TypeCubit>(
         create: (context) =>
             TypeCubit(repository: TypeRepo())..getType(widget.url),
@@ -38,24 +34,19 @@ class _TypeState extends State<Type> {
               if (state is LoadingState) {
                 return loading(context);
               } else if (state is ErrorState) {
-                return Center(
-                  child: Text(
-                    "An error occurred while getting the info about this type, or there is no info about it in our database, sorry :(",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 20.0,
-                    ),
-                  ),
-                );
+                return error(context, "type");
               } else if (state is LoadedStateType) {
                 final type = state.element;
-
                 return Container(
                   child: Center(
                     child: Container(
-                      margin: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+                      margin: const EdgeInsets.only(
+                        top: 20.0,
+                        bottom: 20.0,
+                      ),
                       child: Column(
                         children: <Widget>[
+                          appBarUsingType(context, widget.name, type.name),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
@@ -89,6 +80,7 @@ class _TypeState extends State<Type> {
                                           0.05,
                                     ),
                                     child: ListView.builder(
+                                      padding: EdgeInsets.all(0),
                                       itemCount: type.pokemon.length,
                                       itemBuilder: (context, index) =>
                                           Container(
@@ -148,6 +140,7 @@ class _TypeState extends State<Type> {
                                           0.05,
                                     ),
                                     child: ListView.builder(
+                                      padding: EdgeInsets.all(0),
                                       itemCount: type.moves.length,
                                       itemBuilder: (context, index) =>
                                           Container(
@@ -161,9 +154,9 @@ class _TypeState extends State<Type> {
                                                 builder: (context) => Move(
                                                   url: type.moves[index].url,
                                                   name: type.moves[index].name,
-                                                  ),
                                                 ),
-                                              );
+                                              ),
+                                            );
                                           },
                                           child: Text(
                                             type.moves[index].name,
@@ -183,74 +176,6 @@ class _TypeState extends State<Type> {
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Column(
-                                children: <Widget>[
-                                  Text(
-                                    'Weakness',
-                                    style: TextStyle(
-                                      color: Colors.red,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Container(
-                                    height: (type.doubleDamageFrom.length * 42 +
-                                        40),
-                                    constraints: BoxConstraints(
-                                      maxHeight: 250,
-                                    ),
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.4,
-                                    color: Colors.white,
-                                    padding: const EdgeInsets.only(
-                                      top: 20,
-                                      bottom: 20,
-                                    ),
-                                    margin: EdgeInsets.only(
-                                      top: 20,
-                                      bottom: 20,
-                                      left: MediaQuery.of(context).size.width *
-                                          0.05,
-                                      right: MediaQuery.of(context).size.width *
-                                          0.05,
-                                    ),
-                                    child: ListView.builder(
-                                      itemCount: type.doubleDamageFrom.length,
-                                      itemBuilder: (context, index) =>
-                                          Container(
-                                        height: 42,
-                                        child: TextButton(
-                                          onPressed: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) => Type(
-                                                  url: type
-                                                      .doubleDamageFrom[index]
-                                                      .url,
-                                                  name: type
-                                                      .doubleDamageFrom[index]
-                                                      .name,
-                                                  color: returnColor(type
-                                                      .doubleDamageFrom[index]
-                                                      .name),
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          child: Text(
-                                            type.doubleDamageFrom[index].name,
-                                            style: TextStyle(
-                                              color: returnColor(type
-                                                  .doubleDamageFrom[index]
-                                                  .name),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
                               Column(
                                 children: <Widget>[
                                   Text(
@@ -282,6 +207,7 @@ class _TypeState extends State<Type> {
                                           0.05,
                                     ),
                                     child: ListView.builder(
+                                      padding: EdgeInsets.all(0),
                                       itemCount: type.doubleDamageTo.length,
                                       itemBuilder: (context, index) =>
                                           Container(
@@ -310,6 +236,72 @@ class _TypeState extends State<Type> {
                                             style: TextStyle(
                                               color: returnColor(type
                                                   .doubleDamageTo[index].name),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                children: <Widget>[
+                                  Text(
+                                    'Half effective',
+                                    style: TextStyle(
+                                      color: Colors.red,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Container(
+                                    height:
+                                        (type.halfDamageTo.length * 42 + 40),
+                                    constraints: BoxConstraints(
+                                      maxHeight: 250,
+                                    ),
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.4,
+                                    color: Colors.white,
+                                    padding: const EdgeInsets.only(
+                                      top: 20,
+                                      bottom: 20,
+                                    ),
+                                    margin: EdgeInsets.only(
+                                      top: 20,
+                                      bottom: 20,
+                                      left: MediaQuery.of(context).size.width *
+                                          0.05,
+                                      right: MediaQuery.of(context).size.width *
+                                          0.05,
+                                    ),
+                                    child: ListView.builder(
+                                      padding: EdgeInsets.all(0),
+                                      itemCount: type.halfDamageTo.length,
+                                      itemBuilder: (context, index) =>
+                                          Container(
+                                        height: 42,
+                                        child: TextButton(
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) => Type(
+                                                  url: type
+                                                      .halfDamageTo[index].url,
+                                                  name: type
+                                                      .halfDamageTo[index].name,
+                                                  color: returnColor(type
+                                                      .halfDamageTo[index]
+                                                      .name),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          child: Text(
+                                            type.halfDamageTo[index].name,
+                                            style: TextStyle(
+                                              color: returnColor(type
+                                                  .halfDamageTo[index].name),
                                             ),
                                           ),
                                         ),
@@ -354,6 +346,7 @@ class _TypeState extends State<Type> {
                                           0.05,
                                     ),
                                     child: ListView.builder(
+                                      padding: EdgeInsets.all(0),
                                       itemCount: type.halfDamageFrom.length,
                                       itemBuilder: (context, index) =>
                                           Container(
@@ -393,15 +386,15 @@ class _TypeState extends State<Type> {
                               Column(
                                 children: <Widget>[
                                   Text(
-                                    'Half effective',
+                                    'Weakness',
                                     style: TextStyle(
                                       color: Colors.red,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                   Container(
-                                    height:
-                                        (type.halfDamageTo.length * 42 + 40),
+                                    height: (type.doubleDamageFrom.length * 42 +
+                                        40),
                                     constraints: BoxConstraints(
                                       maxHeight: 250,
                                     ),
@@ -421,7 +414,8 @@ class _TypeState extends State<Type> {
                                           0.05,
                                     ),
                                     child: ListView.builder(
-                                      itemCount: type.halfDamageTo.length,
+                                      padding: EdgeInsets.all(0),
+                                      itemCount: type.doubleDamageFrom.length,
                                       itemBuilder: (context, index) =>
                                           Container(
                                         height: 42,
@@ -432,21 +426,24 @@ class _TypeState extends State<Type> {
                                               MaterialPageRoute(
                                                 builder: (context) => Type(
                                                   url: type
-                                                      .halfDamageTo[index].url,
+                                                      .doubleDamageFrom[index]
+                                                      .url,
                                                   name: type
-                                                      .halfDamageTo[index].name,
+                                                      .doubleDamageFrom[index]
+                                                      .name,
                                                   color: returnColor(type
-                                                      .halfDamageTo[index]
+                                                      .doubleDamageFrom[index]
                                                       .name),
                                                 ),
                                               ),
                                             );
                                           },
                                           child: Text(
-                                            type.halfDamageTo[index].name,
+                                            type.doubleDamageFrom[index].name,
                                             style: TextStyle(
                                               color: returnColor(type
-                                                  .halfDamageTo[index].name),
+                                                  .doubleDamageFrom[index]
+                                                  .name),
                                             ),
                                           ),
                                         ),
@@ -460,71 +457,6 @@ class _TypeState extends State<Type> {
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Column(
-                                children: <Widget>[
-                                  Text(
-                                    'No effective',
-                                    style: TextStyle(
-                                      color: Colors.red,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Container(
-                                    height: (type.noDamageTo.length * 42 + 40),
-                                    constraints: BoxConstraints(
-                                      maxHeight: 250,
-                                    ),
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.4,
-                                    color: Colors.white,
-                                    padding: const EdgeInsets.only(
-                                      top: 20,
-                                      bottom: 20,
-                                    ),
-                                    margin: EdgeInsets.only(
-                                      top: 20,
-                                      bottom: 20,
-                                      left: MediaQuery.of(context).size.width *
-                                          0.05,
-                                      right: MediaQuery.of(context).size.width *
-                                          0.05,
-                                    ),
-                                    child: ListView.builder(
-                                      itemCount: type.noDamageTo.length,
-                                      itemBuilder: (context, index) =>
-                                          Container(
-                                        constraints: BoxConstraints(
-                                          maxHeight: 60,
-                                        ),
-                                        child: TextButton(
-                                          onPressed: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) => Type(
-                                                  url: type
-                                                      .noDamageTo[index].url,
-                                                  name: type
-                                                      .noDamageTo[index].name,
-                                                  color: returnColor(type
-                                                      .noDamageTo[index].name),
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          child: Text(
-                                            type.noDamageTo[index].name,
-                                            style: TextStyle(
-                                              color: returnColor(
-                                                  type.noDamageTo[index].name),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
                               Column(
                                 children: <Widget>[
                                   Text(
@@ -556,6 +488,7 @@ class _TypeState extends State<Type> {
                                           0.05,
                                     ),
                                     child: ListView.builder(
+                                      padding: EdgeInsets.all(0),
                                       itemCount: type.noDamageFrom.length,
                                       itemBuilder: (context, index) =>
                                           Container(
@@ -582,6 +515,72 @@ class _TypeState extends State<Type> {
                                             style: TextStyle(
                                               color: returnColor(type
                                                   .noDamageFrom[index].name),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Column(
+                                children: <Widget>[
+                                  Text(
+                                    'No effective',
+                                    style: TextStyle(
+                                      color: Colors.red,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Container(
+                                    height: (type.noDamageTo.length * 42 + 40),
+                                    constraints: BoxConstraints(
+                                      maxHeight: 250,
+                                    ),
+                                    width:
+                                        MediaQuery.of(context).size.width * 0.4,
+                                    color: Colors.white,
+                                    padding: const EdgeInsets.only(
+                                      top: 20,
+                                      bottom: 20,
+                                    ),
+                                    margin: EdgeInsets.only(
+                                      top: 20,
+                                      bottom: 20,
+                                      left: MediaQuery.of(context).size.width *
+                                          0.05,
+                                      right: MediaQuery.of(context).size.width *
+                                          0.05,
+                                    ),
+                                    child: ListView.builder(
+                                      padding: EdgeInsets.all(0),
+                                      itemCount: type.noDamageTo.length,
+                                      itemBuilder: (context, index) =>
+                                          Container(
+                                        constraints: BoxConstraints(
+                                          maxHeight: 60,
+                                        ),
+                                        child: TextButton(
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) => Type(
+                                                  url: type
+                                                      .noDamageTo[index].url,
+                                                  name: type
+                                                      .noDamageTo[index].name,
+                                                  color: returnColor(type
+                                                      .noDamageTo[index].name),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          child: Text(
+                                            type.noDamageTo[index].name,
+                                            style: TextStyle(
+                                              color: returnColor(
+                                                  type.noDamageTo[index].name),
                                             ),
                                           ),
                                         ),

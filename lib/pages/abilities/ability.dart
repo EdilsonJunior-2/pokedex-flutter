@@ -6,7 +6,6 @@ import 'package:pokedex/cubit/state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/functions.dart';
 import 'package:pokedex/pages/generation_colors.dart';
-import 'package:pokedex/pages/type_colors.dart';
 
 class Ability extends StatefulWidget {
   Ability({Key? key, required this.url, required this.name}) : super(key: key);
@@ -31,20 +30,7 @@ class _AbilityState extends State<Ability> {
               if (state is LoadingState) {
                 return loading(context);
               } else if (state is ErrorState) {
-                return Center(
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    margin: const EdgeInsets.only(
-                        left: 20.0, right: 20.0, top: 20.0),
-                    child: Text(
-                      "An error occurred while getting the info about this ability, or there is no info about it in our database, sorry :(",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 20.0,
-                      ),
-                    ),
-                  ),
-                );
+                return error(context, 'ability');
               } else if (state is LoadedStateAbility) {
                 final ability = state.element;
                 return Container(
@@ -58,55 +44,7 @@ class _AbilityState extends State<Ability> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        Container(
-                          margin: const EdgeInsets.only(
-                            bottom: 10,
-                          ),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              Container(
-                                width: MediaQuery.of(context).size.width * 0.1,
-                                child: IconButton(
-                                  icon: const Icon(
-                                    Icons.arrow_back,
-                                  ),
-                                  color: returnColorByGeneration(
-                                    ability.generation,
-                                  ),
-                                  onPressed: () => {
-                                    Navigator.pop(context),
-                                  },
-                                ),
-                              ),
-                              Container(
-                                width: MediaQuery.of(context).size.width * 0.7,
-                                alignment: Alignment.center,
-                                child: Text(
-                                  widget.name,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: returnColorByGeneration(
-                                      ability.generation,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          height: 1,
-                          width: MediaQuery.of(context).size.width * 0.95,
-                          margin: EdgeInsets.only(
-                            bottom: 20,
-                          ),
-                          color: returnColorByGeneration(
-                            ability.generation,
-                          ),
-                        ),
+                        appBarUsingGeneration(context, widget.name, ability.generation),
                         Text(
                           ability.description,
                           textAlign: TextAlign.center,
@@ -143,6 +81,7 @@ class _AbilityState extends State<Ability> {
                           padding: const EdgeInsets.only(top: 20, bottom: 20),
                           margin: const EdgeInsets.only(top: 20.0, bottom: 20),
                           child: ListView.builder(
+                            padding: EdgeInsets.all(0),
                             itemCount: ability.listOfPokemon.length,
                             itemBuilder: (context, index) => Container(
                               height: 30,

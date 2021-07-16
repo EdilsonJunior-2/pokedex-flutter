@@ -50,6 +50,7 @@ class _AbilitiesPageState extends State<AbilitiesPage> {
                   abilities = state.element;
                   return Expanded(
                     child: ListView.builder(
+                      padding: EdgeInsets.all(0),
                       itemCount: abilities.length,
                       itemBuilder: (context, index) => TextButton(
                         onPressed: () {

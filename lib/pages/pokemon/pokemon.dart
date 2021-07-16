@@ -33,33 +33,7 @@ class _PokemonState extends State<Pokemon> {
               if (state is LoadingState) {
                 return loading(context);
               } else if (state is ErrorState) {
-                return Center(
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          IconButton(
-                            icon: const Icon(
-                              Icons.arrow_back,
-                            ),
-                            color: Colors.black,
-                            onPressed: () => {
-                              Navigator.pop(context),
-                            },
-                          ),
-                        ],
-                      ),
-                      Text(
-                        "There is no info about this pokemon in our database, sorry :(",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 20.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                );
+                return error(context, "pokemon");
               } else if (state is LoadedStatePokemon) {
                 final pokemon = state.element;
                 final statsOrder = [0, 5, 1, 2, 3, 4];
@@ -69,54 +43,10 @@ class _PokemonState extends State<Pokemon> {
                   width: MediaQuery.of(context).size.width * 1,
                   child: Column(
                     children: <Widget>[
-                      Container(
-                        margin: const EdgeInsets.only(
-                          bottom: 10,
-                        ),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.1,
-                              child: IconButton(
-                                icon: const Icon(
-                                  Icons.arrow_back,
-                                ),
-                                color: returnColor(
-                                  pokemon.types[0].name,
-                                ),
-                                onPressed: () => {
-                                  Navigator.pop(context),
-                                },
-                              ),
-                            ),
-                            Container(
-                              width: MediaQuery.of(context).size.width * 0.7,
-                              alignment: Alignment.center,
-                              child: Text(
-                                pokemon.pokemonName,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: returnColor(
-                                    pokemon.types[0].name,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        height: 1,
-                        width: MediaQuery.of(context).size.width * 0.95,
-                        margin: EdgeInsets.only(
-                          bottom: 20,
-                        ),
-                        color: returnColor(
-                          pokemon.types[0].name,
-                        ),
+                      appBarUsingType(
+                        context,
+                        widget.name,
+                        pokemon.types[0].name,
                       ),
                       Image.network(
                         pokemon.imageUrl,
@@ -129,6 +59,7 @@ class _PokemonState extends State<Pokemon> {
                           top: 20,
                         ),
                         child: ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
                           itemCount: pokemon.types.length,
                           padding: EdgeInsets.all(0),
                           itemBuilder: (context, index) => Container(
@@ -165,6 +96,7 @@ class _PokemonState extends State<Pokemon> {
                       Container(
                         height: 126,
                         child: ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
                           itemCount: 3,
                           padding: EdgeInsets.all(0),
                           itemBuilder: (context, index) => Container(
@@ -275,7 +207,7 @@ class _PokemonState extends State<Pokemon> {
                                     top: 20,
                                   ),
                                   child: Text(
-                                    "Moves:",
+                                    "Moves",
                                     textAlign: TextAlign.start,
                                     style: TextStyle(
                                       fontSize: 15.0,
@@ -300,8 +232,8 @@ class _PokemonState extends State<Pokemon> {
                                     bottom: 20,
                                   ),
                                   child: ListView.builder(
-                                    itemCount: pokemon.moves.length,
                                     padding: EdgeInsets.all(0),
+                                    itemCount: pokemon.moves.length,
                                     itemBuilder: (context, index) => Container(
                                       height: 42,
                                       alignment: Alignment.center,
@@ -339,7 +271,7 @@ class _PokemonState extends State<Pokemon> {
                                     top: 20,
                                   ),
                                   child: Text(
-                                    "Abilities:",
+                                    "Abilities",
                                     textAlign: TextAlign.start,
                                     style: TextStyle(
                                       fontSize: 15.0,
@@ -361,6 +293,8 @@ class _PokemonState extends State<Pokemon> {
                                   ),
                                   margin: const EdgeInsets.only(top: 20.0),
                                   child: ListView.builder(
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
                                     itemCount: pokemon.abilities.length,
                                     padding: EdgeInsets.all(0),
                                     itemBuilder: (context, index) => Container(
@@ -397,6 +331,50 @@ class _PokemonState extends State<Pokemon> {
                           ],
                         ),
                       ),
+                      /*Container(
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        child: Text(
+                          "Location",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: (pokemon.locationList.length * 42 + 40),
+                        constraints: BoxConstraints(
+                          maxHeight: 250,
+                        ),
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        color: Colors.white,
+                        padding: const EdgeInsets.only(
+                          top: 20,
+                          bottom: 20,
+                        ),
+                        margin: const EdgeInsets.only(
+                          top: 20,
+                          bottom: 30,
+                        ),
+                        child: ListView.builder(
+                          itemCount: pokemon.locationList.length,
+                          padding: EdgeInsets.all(0),
+                          itemBuilder: (context, index) => Container(
+                            height: 42,
+                            child: Text(
+                              pokemon.locationList[index].locationName,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: returnColor(
+                                  pokemon.types[0].name,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),*/
                     ],
                   ),
                 );

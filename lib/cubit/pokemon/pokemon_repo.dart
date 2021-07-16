@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:pokedex/cubit/location_list/location_list_model.dart';
 import 'package:pokedex/cubit/pokemon/pokemon_model.dart';
 import 'package:pokedex/cubit/move_list/move_list_model.dart';
 import 'package:pokedex/cubit/abilities/abilities_model.dart';
@@ -50,6 +51,21 @@ class PokemonRepo {
       );
       abilities.sort((a, b) => a.name.toString().compareTo(b.name.toString()));
 
+      final response3 =
+          await client.get(response2.data['location_area_encounters']);
+      final locationArea = List<LocationListModel>.of(
+        response3.data.map<LocationListModel>(
+          (json) => LocationListModel(
+            locationName: json['location_area']['name'].toString().replaceAll("-", " "),
+          ),
+        ),
+      );
+      locationArea.sort(
+        (a, b) => a.locationName.toString().compareTo(
+              b.locationName.toString(),
+            ),
+      );
+
       final moves = List<MoveListModel>.of(
         response2.data['moves'].map<MoveListModel>(
           (json) => MoveListModel(
@@ -89,6 +105,7 @@ class PokemonRepo {
         imageUrl: imageUrl,
         flavorTextEntry: finalFlavorText,
         stats: stats,
+        locationList: locationArea,
       );
 
       return pokemon;

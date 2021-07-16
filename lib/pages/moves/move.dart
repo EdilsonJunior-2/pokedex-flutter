@@ -40,15 +40,7 @@ class _MoveState extends State<Move> {
               if (state is LoadingState) {
                 return loading(context);
               } else if (state is ErrorState) {
-                return Center(
-                  child: Text(
-                    "An error occurred while getting the info about this move, or there is no info about it, sorry :(",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 20.0,
-                    ),
-                  ),
-                );
+                return error(context, 'move');
               } else if (state is LoadedStateMove) {
                 final move = state.element;
 
@@ -67,56 +59,10 @@ class _MoveState extends State<Move> {
                       ),
                       child: Column(
                         children: <Widget>[
-                          Container(
-                            margin: const EdgeInsets.only(
-                              bottom: 10,
-                            ),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.1,
-                                  child: IconButton(
-                                    icon: const Icon(
-                                      Icons.arrow_back,
-                                    ),
-                                    color: returnColor(
-                                      move.type.name,
-                                    ),
-                                    onPressed: () => {
-                                      Navigator.pop(context),
-                                    },
-                                  ),
-                                ),
-                                Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.7,
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    widget.name,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: returnColor(
-                                        move.type.name,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            height: 1,
-                            width: MediaQuery.of(context).size.width * 0.95,
-                            margin: EdgeInsets.only(
-                              bottom: 20,
-                            ),
-                            color: returnColor(
-                              move.type.name,
-                            ),
+                          appBarUsingType(
+                            context,
+                            widget.name,
+                            move.type.name,
                           ),
                           Text(
                             move.description,
@@ -125,21 +71,23 @@ class _MoveState extends State<Move> {
                                 fontWeight: FontWeight.bold,
                                 color: returnColor(
                                   move.type.name,
-                                )
-                            ),
+                                )),
                           ),
-                          Container(margin: const EdgeInsets.all(10),),
+                          Container(
+                            margin: const EdgeInsets.all(10),
+                          ),
                           Text(
                             "Effect: ${move.effect}",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                              color: returnColor(
-                                move.type.name,
-                              )
-                            ),
+                                color: returnColor(
+                                  move.type.name,
+                                )),
                           ),
-                          Container(margin: const EdgeInsets.all(10),),
+                          Container(
+                            margin: const EdgeInsets.all(10),
+                          ),
                           Container(
                             height: 1,
                             width: MediaQuery.of(context).size.width * 0.95,
@@ -174,7 +122,9 @@ class _MoveState extends State<Move> {
                             textAlign: TextAlign.center,
                             style: textStyle(move.type.name),
                           ),
-                          Container(margin: const EdgeInsets.all(10),),
+                          Container(
+                            margin: const EdgeInsets.all(10),
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
@@ -232,6 +182,7 @@ class _MoveState extends State<Move> {
                                       MediaQuery.of(context).size.width * 0.05,
                                 ),
                                 child: ListView.builder(
+                                  padding: EdgeInsets.all(0),
                                   itemCount: move.pokemon.length,
                                   itemBuilder: (context, index) => Container(
                                     height: 42,
@@ -252,7 +203,9 @@ class _MoveState extends State<Move> {
                                         move.pokemon[index].pokemonName,
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          color: returnColor(move.type.name,),
+                                          color: returnColor(
+                                            move.type.name,
+                                          ),
                                         ),
                                       ),
                                     ),

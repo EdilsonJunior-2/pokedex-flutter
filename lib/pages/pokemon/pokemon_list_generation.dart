@@ -50,6 +50,7 @@ class _PokemonListGenerationPageState extends State<PokemonListGenerationPage> {
                   pokemonList = state.element;
                   return Expanded(
                     child: ListView.builder(
+                      padding: EdgeInsets.all(0),
                       itemCount: pokemonList.length,
                       itemBuilder: (context, index) => TextButton(
                         onPressed: () {
