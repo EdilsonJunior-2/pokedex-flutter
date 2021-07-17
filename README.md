@@ -154,7 +154,7 @@ The app actually shows you 3 main informations: [pokemon](#the-pokemon-species),
   I planned to improve the app with some extra things, like:
   
   - Show the location in-game of the pokemon that you can catch and the method (and the pokemon that you can catch in each location, maybe);
-  - Remove "unknown" and "shadow" from Types options (Wanna understand it? Click [here](#shadow-and-unknown-types);
+  - Remove "unknown" and "shadow" from Types options (Wanna understand it? Click [here](#shadow-and-unknown-types));
   - Re-design the initial screen (I'm not so good in design but i'll try, i promise (: );
   - And another small things that i don't elaborate with details yet.
 
