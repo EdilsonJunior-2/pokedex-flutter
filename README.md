@@ -13,7 +13,7 @@ A few resources to get you started if this is your first Flutter project:
 
 ## What did it do?
 
-The app actually shows you 3 main informations: [pokemon](#the-pokemon-species), [types](#tye-pokemon-types) and [abilities](#the-pokemon-abilities), and a extra screen with [pokemon moves](#extra:-pokemon-moves)
+The app actually shows you 3 main informations: [pokemon](#the-pokemon-species), [types](#tye-pokemon-types) and [abilities](#the-pokemon-abilities), and a extra screen with [pokemon moves](#pokemon-moves)
 
   ### The pokemon species
   
@@ -63,7 +63,7 @@ The app actually shows you 3 main informations: [pokemon](#the-pokemon-species),
   <br />
   <img src="/readme_gifs/Abilities.gif" width="250" />
   
-  ### Extra: pokemon moves
+  ### The Pokemon moves
 
   ## Type colors
 
