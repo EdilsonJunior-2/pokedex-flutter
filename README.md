@@ -13,7 +13,7 @@ A few resources to get you started if this is your first Flutter project:
 
 ## What did it do?
 
-The app actually shows you 3 main informations: [pokemon](#the-pokemon-species), [types](#tye-pokemon-types) and [abilities](#the-pokemon-abilities), and a extra screen with [pokemon moves](#pokemon-moves)
+The app actually shows you 3 main informations: [pokemon](#the-pokemon-species), [types](#tye-pokemon-types) and [abilities](#the-pokemon-abilities), and a extra screen with [pokemon moves](#the-pokemon-moves)
 
   ### The pokemon species
   
@@ -35,7 +35,7 @@ The app actually shows you 3 main informations: [pokemon](#the-pokemon-species),
   
   ### The pokemon types
   
-  This section shows you all the 18 existing types (and 2 extra that i explain [here](#shadow-and-uknown-types)). Each button color is associated to its type, that you can (again) see [here](#type-colors). Clicking on the type, you'll go to a screen with Type info:
+  This section shows you all the 18 existing types (and 2 extra that i explain [here](#shadow-and-uknown-types)). Each button color is associated to its type, that you can (again) see [here](#type-colors). Clicking on the type, you'll go to a screen with type info:
   
   - The moves of this type;
   - The Pokemon that have this type;
@@ -59,11 +59,34 @@ The app actually shows you 3 main informations: [pokemon](#the-pokemon-species),
   Ok, trying to explain: these two extra types are from PokeAPI so they appear for now, but they don't exist really in the game and i really don't no why they appear in the database. I pretend to treat it in the future, and you can click [here](#more-to-come) so see this and another future updates.
 
   ### The pokemon abilities
-
+  
+  This section shows you all pokemon abilities. Clicking on the ability nome, you'll go to a screen with ability info:
+  
+  - A description of what the ability does;
+  - A list with all the pokemon that might have this ability.
+  
+  The text color in this screen is associated with the generation that the ability was created. You can see this association [here](#generation-types). You can also click on the pokemon names and go to its screen.
+ 
+ Example:
   <br />
   <img src="/readme_gifs/Abilities.gif" width="250" />
-  
+  <br />
+
   ### The Pokemon moves
+
+  There isn't a screen listing the pokemon moves. You can access it from any type or pokemon screen. Clicking on the move name, you'll go to a screen with move info:
+  
+  - A random description from any pokedex that this move appears;
+  - The move effect (deals damage, may burn, paralyse, increase some stats, something like these);
+  - The move type, class (physical, special or status), PP (number of times that the move can be used) and power (if it exist);
+  - A list with all pokemon that can learn this move.
+
+  The text color of this page is associated to the type of the move, that you can see (one more time), if you want, [here](#type-colors). You can also click on the pokemon or type names and go to its screen.
+  
+  Example:
+  <br />
+  
+  <br />
 
   ## Type colors
 
