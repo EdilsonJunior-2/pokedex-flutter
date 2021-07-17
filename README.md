@@ -16,17 +16,20 @@ A few resources to get you started if this is your first Flutter project:
 The app actually shows you 3 main informations:
 
   ### The pokemon species
-  
-  ![](/readme_gifs/Pokemon.gif)
+ 
+  <br />
+  <img src="readme_gifs/Pokemon.gif" />
   
   ### The pokemon types
   
+  <br />
   <img src="/readme_gifs/Types.gif" width="250" />
   
   ### The pokemon abilities
-  
-  ![](/readme_gifs/Abilities.gif)
 
+  <br />
+  <img src="/readme_gifs/Abilities.gif" />
+  
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
