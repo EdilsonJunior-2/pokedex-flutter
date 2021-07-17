@@ -56,7 +56,7 @@ The app actually shows you 3 main informations:
 
   Well, you probably saw two black buttons named "unkown" and "shadow" and asked yourself "What are these types?". Well, i don't know too, sorry ;-;
   <br />
-  Ok, trying to explain: these two extra types are from PokeAPI so they appear for now. I pretend to treat it in the future, and you can click [here](#more-to-come) so see this and another future updates.
+  Ok, trying to explain: these two extra types are from PokeAPI so they appear for now, but they don't exist really in the game and i really don't no why they appear in the database. I pretend to treat it in the future, and you can click [here](#more-to-come) so see this and another future updates.
 
   ### The pokemon abilities
 
