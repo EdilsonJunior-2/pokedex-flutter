@@ -21,7 +21,7 @@ The app actually shows you 3 main informations:
   
   ### The pokemon types
   
-  ![](/readme_gifs/Types.gif)
+  <img src="/readme_gifs/Types.gif" width="250" />
   
   ### The pokemon abilities
   
