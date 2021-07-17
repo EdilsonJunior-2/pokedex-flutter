@@ -26,7 +26,7 @@ The app actually shows you 3 main informations: [pokemon](#the-pokemon-species),
   - A random description from any pokedex that this pokemon appears;
   - List with this pokemon's moves and abilities;
   
-  The text colors in pokemon details are associated to the pokemon main type (except the secondary type, if it exists, which have your color associated to itself). You can see this association [here](#type-colors). You can also click on any type, move or ability and go to its respective screen.
+  The text colors in pokemon details are associated to the pokemon main type (except the secondary type, if it exists, which have your color associated to itself). You can see this association, if you want, [here](#type-colors). You can also click on any type, move or ability and go to its respective screen.
  
   Example:
   <br />
@@ -35,7 +35,7 @@ The app actually shows you 3 main informations: [pokemon](#the-pokemon-species),
   
   ### The pokemon types
   
-  This section shows you all the 18 existing types (and 2 extra that i explain [here](#shadow-and-uknown-types)). Each button color is associated to its type, that you can (again) see [here](#type-colors). Clicking on the type, you'll go to a screen with type info:
+  This section shows you all the 18 existing types (and 2 extra that i explain [here](#shadow-and-uknown-types)). Each button color is associated to its type, that you can (again) see, if you want, [here](#type-colors). Clicking on the type, you'll go to a screen with type info:
   
   - The moves of this type;
   - The Pokemon that have this type;
@@ -67,7 +67,7 @@ The app actually shows you 3 main informations: [pokemon](#the-pokemon-species),
   
   The text color in this screen is associated with the generation that the ability was created. You can see this association [here](#generation-types). You can also click on the pokemon names and go to its screen.
  
- Example:
+  Example:
   <br />
   <img src="/readme_gifs/Abilities.gif" width="250" />
   <br />
@@ -81,13 +81,13 @@ The app actually shows you 3 main informations: [pokemon](#the-pokemon-species),
   - The move type, class (physical, special or status), PP (number of times that the move can be used) and power (if it exist);
   - A list with all pokemon that can learn this move.
 
-  The text color of this page is associated to the type of the move, that you can see (one more time), if you want, [here](#type-colors). You can also click on the pokemon or type names and go to its screen.
-  
   Example:
   <br />
-  
+  <img src="readme_gifs/Types.gif" width="250" />  
   <br />
 
+  The text color of this page is associated to the type of the move, that you can see (one more time), if you want, [here](#type-colors). You can also click on the pokemon or type names and go to its screen.
+  
   ## Type colors
 
   Each pokemon type have its representative color. These colors are:
