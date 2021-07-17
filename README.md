@@ -62,6 +62,8 @@ The app actually shows you 3 main informations: [pokemon](#the-pokemon-species),
 
   <br />
   <img src="/readme_gifs/Abilities.gif" width="250" />
+  
+  ### Extra: pokemon moves
 
   ## Type colors
 
