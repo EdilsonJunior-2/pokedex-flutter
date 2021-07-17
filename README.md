@@ -28,14 +28,36 @@ The app actually shows you 3 main informations:
   
   The text colors in pokemon details are associated to the pokemon main type (except the secondary type, if it exists, which have your color associated to itself). You can see this association [here](#type-colors). You can also click on any type, move or ability and go to its respective screen.
  
+  Example:
   <br />
   <img src="readme_gifs/Pokemon.gif" width="250" />
+  <br />
   
   ### The pokemon types
   
+  This section shows you all the 18 existing types (and 2 extra that i explain [here](#shadow-and-uknown-types)). Each button color is associated to its type, that you can (again) see [here](#type-colors). Clicking on the type, you'll go to a screen with Type info:
+  
+  - The moves of this type;
+  - The Pokemon that have this type;
+  - The damage relations with other types:
+    - Super effective: Types that suffer double damage from the actual type;
+    - Half effective: Types that suffer half damage from the actual type;
+    - Resistance: Types that deal half damage from the actual type;
+    - Weakness: Types that deal double damage from the actual type;
+    - Immunity: Types that deal no damage from the actual type;
+    - No effective: Types that suffer no damage from the actual type;
+  
+  Example:  
   <br />
   <img src="/readme_gifs/Types.gif" width="250" />
+  <br />
   
+  ### Shadow and Uknown types
+
+  Well, you probably saw two black buttons named "unkown" and "shadow" and asked yourself "What is these types?". Well, i don't know too, sorry ;-;
+  <br />
+  Ok, trying to explain: These two extra types are from PokeAPI so they appear for now. I pretend to treat it in the future, and you can click [here](#more-to-come) so see this and another future updates.
+
   ### The pokemon abilities
 
   <br />
@@ -84,6 +106,8 @@ Each pokemon type have its representative color. These colors are:
   ```
 
 ## Generation colors
+
+## More to come
   
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
