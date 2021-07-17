@@ -45,7 +45,7 @@ The app actually shows you 3 main informations:
 
 Each pokemon type have its representative color. These colors are:
 
-  '''bash
+  ```bash
   Normal: #A8A878,<br/>
   Fighting: #C03028,<br/>
   Flying: #B3B3FF,<br/>
@@ -64,7 +64,7 @@ Each pokemon type have its representative color. These colors are:
   Dragon: #7038F8,<br/>
   Dark: #3E223A,<br/>
   Fairy: #EE99AC
-  '''
+  ```
 
 ## Generation colors
   
