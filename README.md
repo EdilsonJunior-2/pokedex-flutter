@@ -18,7 +18,7 @@ The app actually shows you 3 main informations:
   ### The pokemon species
  
   <br />
-  <img src="readme_gifs/Pokemon.gif" />
+  <img src="readme_gifs/Pokemon.gif" width="250" />
   
   ### The pokemon types
   
@@ -28,7 +28,7 @@ The app actually shows you 3 main informations:
   ### The pokemon abilities
 
   <br />
-  <img src="/readme_gifs/Abilities.gif" />
+  <img src="/readme_gifs/Abilities.gif" width="250" />
   
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
