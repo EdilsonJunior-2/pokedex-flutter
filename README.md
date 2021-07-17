@@ -13,7 +13,7 @@ A few resources to get you started if this is your first Flutter project:
 
 ## What did it do?
 
-The app actually shows you 3 main informations:
+The app actually shows you 3 main informations: [pokemon](#the-pokemon-species), [types](#tye-pokemon-types) and [abilities](#the-pokemon-abilities), and a extra screen with [pokemon moves](#extra:-pokemon-moves)
 
   ### The pokemon species
   
@@ -52,7 +52,7 @@ The app actually shows you 3 main informations:
   <img src="/readme_gifs/Types.gif" width="250" />
   <br />
   
-  ### Shadow and Uknown types
+  #### Shadow and Uknown types
 
   Well, you probably saw two black buttons named "unkown" and "shadow" and asked yourself "What are these types?". Well, i don't know too, sorry ;-;
   <br />
