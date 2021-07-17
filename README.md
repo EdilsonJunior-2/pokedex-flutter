@@ -46,23 +46,40 @@ The app actually shows you 3 main informations:
 Each pokemon type have its representative color. These colors are:
 
   ```bash
-  Normal: #A8A878,<br/>
-  Fighting: #C03028,<br/>
-  Flying: #B3B3FF,<br/>
-  Poison: #A040A0,<br/>
-  Ground: #E0C068,<br/>
-  Rock: #B8A038,<br/>
-  Bug: #A8B820,<br/>
-  Ghost: #705898,<br/>
-  Steel: #C0C0C0,<br/>
-  Fire: #F08030,<br/>
-  Water: #6890F0,<br/>
-  Grass: #78C850,<br/>
-  Electric: #F8D030,<br/>
-  Psychic: #F85888,<br/>
-  Ise: #98D8D8,<br/>
-  Dragon: #7038F8,<br/>
-  Dark: #3E223A,<br/>
+  Normal: #A8A878
+  
+  Fighting: #C03028
+  
+  Flying: #B3B3FF
+  
+  Poison: #A040A0
+  
+  Ground: #E0C068
+  
+  Rock: #B8A038
+  
+  Bug: #A8B820
+  
+  Ghost: #705898
+  
+  Steel: #C0C0C0
+  
+  Fire: #F08030
+  
+  Water: #6890F0
+  
+  Grass: #78C850
+  
+  Electric: #F8D030
+  
+  Psychic: #F85888
+  
+  Ise: #98D8D8
+  
+  Dragon: #7038F8
+  
+  Dark: #3E223A
+  
   Fairy: #EE99AC
   ```
 
