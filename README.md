@@ -1,15 +1,12 @@
 # Pokedex App
 
-Hello there! Welcome to my first ever flutter app (the name is self-explaining). 
+Hello there! Welcome to my first ever flutter app. Hope you like him :)
 
-## Getting Started
+## What is it?
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+As the name said, this application works like a pokedex from Pokemon series, showing the user data of pokemon (and some extra things).
+<br />
+The app uses the database from [PokeAPI](https://pokeapi.co). You can access the api GitHub [here](https://github.com/PokeAPI/pokeapi/).
 
 ## What did it do?
 
@@ -52,9 +49,9 @@ The app actually shows you 3 main informations: [pokemon](#the-pokemon-species),
   <img src="/readme_gifs/Types.gif" width="250" />
   <br />
   
-  #### Shadow and Uknown types
+  #### Shadow and Unknown types
 
-  Well, you probably saw two black buttons named "unkown" and "shadow" and asked yourself "What are these types?". Well, i don't know too, sorry ;-;
+  Well, you probably saw two black buttons named "unknown" and "shadow" and asked yourself "What are these types?". Well, i don't know too, sorry ;-;
   <br />
   Ok, trying to explain: these two extra types are from PokeAPI so they appear for now, but they don't exist really in the game and i really don't no why they appear in the database. I pretend to treat it in the future, and you can click [here](#more-to-come) so see this and another future updates.
 
@@ -154,6 +151,16 @@ The app actually shows you 3 main informations: [pokemon](#the-pokemon-species),
 
   ## More to come
   
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  I planned to improve the app with some extra things, like:
+  
+  - Show the location in-game of the pokemon that you can catch and the method (and the pokemon that you can catch in each location, maybe);
+  - Remove "unknown" and "shadow" from Types options (Wanna understand it? Click [here](#shadow-and-unknown-types);
+  - Re-design the initial screen (I'm not so good in design but i'll try, i promise (: );
+  - And another small things that i don't elaborate with details yet.
+
+  ## Download
+  
+  Are you interested in my project? [Download it here](https://drive.google.com/file/d/1uo9XCNsDg9tkE2_8slUXTMdJ8L1PsTPp/view?usp=sharing) and test yourself! Any hint or issue please contact me, i'll apreciate it so much.
+  <br />
+  Did you see the project and become interested in Flutter? [Visit this site](https://flutter.dev/?gclid=Cj0KCQjw_8mHBhClARIsABfFgpjIMi-3IdaGfvC_uuOW6Z-RovLCarHPta8itmmnadDkQPBciENNRFYaAoAsEALw_wcB&gclsrc=aw.ds) and learn about it!
+
