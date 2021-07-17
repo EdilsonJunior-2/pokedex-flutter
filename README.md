@@ -83,7 +83,7 @@ The app actually shows you 3 main informations: [pokemon](#the-pokemon-species),
 
   Example:
   <br />
-  <img src="readme_gifs/Types.gif" width="250" />  
+  <img src="readme_gifs/Moves.gif" width="250" />  
   <br />
 
   The text color of this page is associated to the type of the move, that you can see (one more time), if you want, [here](#type-colors). You can also click on the pokemon or type names and go to its screen.
