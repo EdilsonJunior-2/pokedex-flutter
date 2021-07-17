@@ -63,9 +63,9 @@ The app actually shows you 3 main informations:
   <br />
   <img src="/readme_gifs/Abilities.gif" width="250" />
 
-## Type colors
+  ## Type colors
 
-Each pokemon type have its representative color. These colors are:
+  Each pokemon type have its representative color. These colors are:
 
   ```bash
   Normal: #A8A878
@@ -105,9 +105,29 @@ Each pokemon type have its representative color. These colors are:
   Fairy: #EE99AC
   ```
 
-## Generation colors
+  ## Generation colors
 
-## More to come
+  The generation don't have specific colors, so i choose randomly from the type colors one for each one. These are:
+
+  ```bash
+  Generation 1 (Kanto): #78C850
+
+  Generation 2 (Jothoh): #F08030
+
+  Generation 3 (Hoenn): #6890F0
+
+  Generation 4 (Sinnoh): #F8D030
+
+  Generation 5 (Unova): #E0C068
+
+  Generation 6 (Kalos): #EE99AC
+
+  Generation 7 (Alola): #C03028
+
+  Generation 8 (Galar): #F85888
+  ```
+
+  ## More to come
   
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
