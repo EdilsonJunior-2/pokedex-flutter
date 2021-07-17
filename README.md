@@ -1,6 +1,6 @@
 # Pokedex App
 
-Hello there! Welcome to my first ever flutter app. Hope you like him :)
+Hello there! Welcome to my first ever flutter app. Hope you like it :)
 
 ## What is it?
 
