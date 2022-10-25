@@ -16,7 +16,7 @@ class CustomColors {
   static const DarkColor = const Color(0xFF3E223A);
   static const RockColor = const Color(0xFFB8A038);
   static const PsychicColor = const Color(0xFFF85888);
-  static const IceColor = const Color(0xFF980808);
+  static const IceColor = const Color(0xFF98D8D8);
   static const GhostColor = const Color(0xFF705898);
   static const DragonColor = const Color(0xFF7038F8);
 }

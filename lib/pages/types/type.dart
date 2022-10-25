@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/functions.dart';
 import 'package:pokedex/pages/type_colors.dart';
 import 'package:pokedex/schemas.dart';
+import 'package:pokedex/commons/grid.dart';
 
 class Type extends StatefulWidget {
   Type({Key? key, required this.url, required this.name, required this.color})
@@ -22,7 +23,6 @@ class Type extends StatefulWidget {
 }
 
 class _TypeState extends State<Type> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,31 +60,27 @@ class _TypeState extends State<Type> {
                       ),
                       child: Column(
                         children: <Widget>[
-                          appBarUsingType(context, widget.name, type.name),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Column(
-                                children: <Widget>[
-                                  TypeDetails(
-                                      typeName: listOfLists[0].typeName,
-                                      listName: listOfLists[0].listName,
-                                      color: listOfLists[0].color,
-                                      optionsList: listOfLists[0].optionsList),
-                                ],
-                              ),
-                              Column(
-                                children: <Widget>[
-                                  TypeDetails(
-                                      typeName: listOfLists[1].typeName,
-                                      listName: listOfLists[1].listName,
-                                      color: listOfLists[1].color,
-                                      optionsList: listOfLists[1].optionsList),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Row(
+                          Grid(elements: [
+                            Container(
+                                child: TypeDetails(
+                                    typeName: listOfLists[0].typeName,
+                                    listName: listOfLists[0].listName,
+                                    color: listOfLists[0].color,
+                                    optionsList: listOfLists[0].optionsList)),
+                            Container(
+                                child: TypeDetails(
+                                    typeName: listOfLists[1].typeName,
+                                    listName: listOfLists[1].listName,
+                                    color: listOfLists[1].color,
+                                    optionsList: listOfLists[1].optionsList)),
+                            Container(
+                                child: TypeDetails(
+                                    typeName: listOfLists[1].typeName,
+                                    listName: listOfLists[1].listName,
+                                    color: listOfLists[1].color,
+                                    optionsList: listOfLists[1].optionsList))
+                          ], elementsPerLine: 2),
+                          /*Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Column(
@@ -501,7 +497,7 @@ class _TypeState extends State<Type> {
                                 ],
                               ),
                             ],
-                          ),
+                          ),*/
                         ],
                       ),
                     ),

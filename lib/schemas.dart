@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class OptionsList {
-  const OptionsList({required this.url, required this.name});
+  const OptionsList({required this.url, required this.name, this.image});
 
   final String url;
   final String name;
+  final Image? image;
 }
 
 class ListSchema {

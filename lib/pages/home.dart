@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/commons/customButton.dart';
+import 'package:pokedex/themes/color.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({
@@ -17,51 +19,27 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            TextButton(
-              child: Text(
-                'Pokemon List',
-                style: TextStyle(
-                  fontSize: 20.0,
-                  color: Colors.white,
-                ),
-              ),
-              style: TextButton.styleFrom(
-                backgroundColor: Color(0xFF98D8D8),
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/pokemon');
-              },
-            ),
-            TextButton(
-              child: Text(
-                'Pokemon Types',
-                style: TextStyle(
-                  fontSize: 20.0,
-                  color: Colors.white,
-                ),
-              ),
-              style: TextButton.styleFrom(
-                backgroundColor: Color(0xFFA8A878),
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/types');
-              },
-            ),
-            TextButton(
-              child: Text(
-                'Abilities',
-                style: TextStyle(
-                  fontSize: 20.0,
-                  color: Colors.white,
-                ),
-              ),
-              style: TextButton.styleFrom(
-                backgroundColor: Color(0xFF78C850),
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/abilities');
-              },
-            ),
+            CustomButton(
+                text: 'Pokemon list',
+                color: Colors.white,
+                bgColor: CustomColors.PoisonColor,
+                function: () {
+                  Navigator.pushNamed(context, '/pokemon');
+                }),
+            CustomButton(
+                text: 'Pokemon types',
+                color: Colors.white,
+                bgColor: CustomColors.IceColor,
+                function: () {
+                  Navigator.pushNamed(context, '/types');
+                }),
+            CustomButton(
+                text: 'Pokemon abilities',
+                color: Colors.white,
+                bgColor: CustomColors.GrassColor,
+                function: () {
+                  Navigator.pushNamed(context, '/abilities');
+                })
           ],
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:pokedex/schemas.dart';
 import 'package:pokedex/pages/type_colors.dart';
+import 'package:pokedex/functions.dart';
 
 class PokemonListRepo {
   PokemonListRepo();
@@ -19,17 +20,14 @@ class PokemonListRepo {
     try {
       final response = await client.get(url);
       final pokemonSpecies = response.data['pokemon_species'];
-      pokemonSpecies
-          .sort((a, b) => a['name'].toString().compareTo(b['name'].toString()));
+      pokemonSpecies.sort((a, b) => getPokemonNumber(a['url'].toString())
+          .compareTo(getPokemonNumber(b['url'].toString())));
       final pokemonList = List<OptionsList>.of(
-        pokemonSpecies.map<OptionsList>(
-          (json) => OptionsList(
-            name: json['name'],
-            url: json['url'],
-          ),
-        ),
+        pokemonSpecies.map<OptionsList>((json) => OptionsList(
+              name: json['name'],
+              url: json['url'],
+            )),
       );
-
       return pokemonList;
     } catch (e) {
       throw e;

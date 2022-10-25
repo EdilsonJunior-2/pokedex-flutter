@@ -7,6 +7,7 @@ import 'package:pokedex/cubit/state.dart';
 import 'package:pokedex/pages/type_colors.dart';
 import 'package:pokedex/pages/types/type.dart';
 import 'package:pokedex/functions.dart';
+import 'package:pokedex/commons/customButton.dart';
 
 class TypeListPage extends StatefulWidget {
   TypeListPage({Key? key}) : super(key: key);
@@ -26,7 +27,6 @@ class ColorList {
 }
 
 class _TypeListPageState extends State<TypeListPage> {
-
   List<OptionsList> types = [];
 
   @override
@@ -58,15 +58,15 @@ class _TypeListPageState extends State<TypeListPage> {
                       width: MediaQuery.of(context).size.width * 0.7,
                       child: GridView.builder(
                         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                            maxCrossAxisExtent: 120,
-                            childAspectRatio: 5 / 2,
-                            crossAxisSpacing: 20,
-                            mainAxisSpacing: 20,
+                          maxCrossAxisExtent: 120,
+                          childAspectRatio: 5 / 2,
+                          crossAxisSpacing: 20,
+                          mainAxisSpacing: 20,
                         ),
                         itemCount: types.length,
                         itemBuilder: (context, index) => Container(
-                          child: TextButton(
-                            onPressed: () {
+                          child: CustomButton(
+                            function: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -78,14 +78,9 @@ class _TypeListPageState extends State<TypeListPage> {
                                 ),
                               );
                             },
-                            child: Text(
-                              types[index].name,
-                              style: TextStyle(
-                                  fontSize: 20.0, color: Colors.white),
-                            ),
-                            style: TextButton.styleFrom(
-                              backgroundColor: returnColor(types[index].name),
-                            ),
+                            text: types[index].name,
+                            color: Colors.white,
+                            bgColor: returnColor(types[index].name),
                           ),
                         ),
                       ),
