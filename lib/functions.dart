@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/pages/generation_colors.dart';
-import 'package:pokedex/pages/type_colors.dart';
 
 isNullOrNot(value) {
   if (value != null) {
@@ -62,59 +61,7 @@ error(context, info) {
 }
 
 appBarUsingType(context, name, type) {
-  return Column(
-    children: [
-      Container(
-        margin: const EdgeInsets.only(
-          bottom: 10,
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              width: MediaQuery.of(context).size.width * 0.14,
-              child: IconButton(
-                icon: const Icon(
-                  Icons.arrow_back,
-                ),
-                color: returnColor(
-                  type,
-                ),
-                onPressed: () => {
-                  Navigator.pop(context),
-                },
-              ),
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.65,
-              alignment: Alignment.center,
-              child: Text(
-                name,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: returnColor(
-                    type,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-      Container(
-        height: 1,
-        width: MediaQuery.of(context).size.width * 0.95,
-        margin: EdgeInsets.only(
-          bottom: 20,
-        ),
-        color: returnColor(
-          type,
-        ),
-      ),
-    ],
-  );
+
 }
 
 appBarUsingGeneration(context, name, generation) {

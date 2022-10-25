@@ -10,6 +10,7 @@ import 'package:pokedex/pages/type_colors.dart';
 import 'package:pokedex/schemas.dart';
 import 'package:pokedex/commons/grid.dart';
 import 'package:pokedex/commons/typeEffectivenessDetails.dart';
+import 'package:pokedex/commons/customTopBar.dart';
 
 class Type extends StatefulWidget {
   Type({Key? key, required this.url, required this.name, required this.color})
@@ -74,6 +75,10 @@ class _TypeState extends State<Type> {
                       ),
                       child: Column(
                         children: <Widget>[
+                          CustomTopBar(
+                            title: "${widget.name} type",
+                            color: returnColor(widget.name),
+                          ),
                           Grid(elements: [
                             Container(
                                 child: TypeDetails(

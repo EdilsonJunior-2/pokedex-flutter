@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/commons/customTopBar.dart';
 import 'package:pokedex/cubit/pokemon/pokemon_cubit.dart';
 import 'package:pokedex/cubit/pokemon/pokemon_repo.dart';
 import 'package:pokedex/pages/abilities/ability.dart';
@@ -38,16 +39,10 @@ class _PokemonState extends State<Pokemon> {
                 final pokemon = state.element;
                 final statsOrder = [0, 5, 1, 2, 3, 4];
                 return Container(
-                  margin:
-                      const EdgeInsets.only(left: 20.0, right: 20.0, top: 35.0),
                   width: MediaQuery.of(context).size.width * 1,
                   child: Column(
-                    children: <Widget>[
-                      appBarUsingType(
-                        context,
-                        widget.name,
-                        pokemon.types[0].name,
-                      ),
+                    children: [
+                      CustomTopBar(title: widget.name, color: returnColor(pokemon.types[0].name)),
                       Image.network(
                         pokemon.imageUrl,
                         width: 120,
@@ -195,6 +190,8 @@ class _PokemonState extends State<Pokemon> {
                       Container(
                         margin: EdgeInsets.only(
                           bottom: 30,
+                          left: 20.0,
+                          right: 20.0,
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -331,50 +328,6 @@ class _PokemonState extends State<Pokemon> {
                           ],
                         ),
                       ),
-                      /*Container(
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        child: Text(
-                          "Location",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        height: (pokemon.locationList.length * 42 + 40),
-                        constraints: BoxConstraints(
-                          maxHeight: 250,
-                        ),
-                        width: MediaQuery.of(context).size.width * 0.8,
-                        color: Colors.white,
-                        padding: const EdgeInsets.only(
-                          top: 20,
-                          bottom: 20,
-                        ),
-                        margin: const EdgeInsets.only(
-                          top: 20,
-                          bottom: 30,
-                        ),
-                        child: ListView.builder(
-                          itemCount: pokemon.locationList.length,
-                          padding: EdgeInsets.all(0),
-                          itemBuilder: (context, index) => Container(
-                            height: 42,
-                            child: Text(
-                              pokemon.locationList[index].locationName,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: returnColor(
-                                  pokemon.types[0].name,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),*/
                     ],
                   ),
                 );
