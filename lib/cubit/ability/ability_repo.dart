@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:pokedex/cubit/ability/ability_model.dart';
-import 'package:pokedex/cubit/pokemon_list/pokemon_list_model.dart';
+import 'package:pokedex/schemas.dart';
 
 class AbilityRepo {
   AbilityRepo();
@@ -10,10 +10,10 @@ class AbilityRepo {
     try {
       final response = await client.get(url);
 
-      final pokemonList = List<PokemonListModel>.of(
-        response.data["pokemon"].map<PokemonListModel>(
-          (json) => PokemonListModel(
-            pokemonName: json['pokemon']['name'],
+      final pokemonList = List<OptionsList>.of(
+        response.data["pokemon"].map<OptionsList>(
+          (json) => OptionsList(
+            name: json['pokemon']['name'],
             url: json['pokemon']['url'],
           ),
         ),

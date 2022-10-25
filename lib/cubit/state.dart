@@ -1,9 +1,7 @@
 import 'package:equatable/equatable.dart';
-import 'package:pokedex/cubit/abilities/abilities_model.dart';
 import 'package:pokedex/cubit/ability/ability_model.dart';
-import 'package:pokedex/cubit/pokemon_list/pokemon_list_model.dart';
+import 'package:pokedex/schemas.dart';
 import 'package:pokedex/cubit/pokemon/pokemon_model.dart';
-import 'package:pokedex/cubit/type_list/type_list_model.dart';
 import 'package:pokedex/cubit/type/type_model.dart';
 import 'package:pokedex/cubit/move/move_model.dart';
 
@@ -22,7 +20,7 @@ class LoadingState extends StateClass {
 class LoadedStateAbilitiesList extends StateClass {
   LoadedStateAbilitiesList(this.element);
 
-  final List<AbilitiesModel> element;
+  final List<OptionsList> element;
 
   @override
   List<Object> get props => [element];
@@ -40,7 +38,7 @@ class LoadedStateAbility extends StateClass {
 class LoadedStatePokemonList extends StateClass {
   LoadedStatePokemonList(this.element);
 
-  final List<PokemonListModel> element;
+  final List<OptionsList> element;
 
   @override
   List<Object> get props => [element];
@@ -58,7 +56,7 @@ class LoadedStatePokemon extends StateClass {
 class LoadedStateTypeList extends StateClass {
   LoadedStateTypeList(this.element);
 
-  final List<TypeListModel> element;
+  final List<OptionsList> element;
 
   @override
   List<Object> get props => [element];

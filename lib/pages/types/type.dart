@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/commons/typeDetails.dart';
 import 'package:pokedex/cubit/type/type_cubit.dart';
 import 'package:pokedex/cubit/type/type_repo.dart';
-import 'package:pokedex/pages/moves/move.dart';
-import 'package:pokedex/pages/pokemon/pokemon.dart';
 import 'package:pokedex/cubit/state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:pokedex/functions.dart';
 import 'package:pokedex/pages/type_colors.dart';
+import 'package:pokedex/schemas.dart';
 
 class Type extends StatefulWidget {
   Type({Key? key, required this.url, required this.name, required this.color})
@@ -22,6 +22,7 @@ class Type extends StatefulWidget {
 }
 
 class _TypeState extends State<Type> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,6 +38,19 @@ class _TypeState extends State<Type> {
                 return error(context, "type");
               } else if (state is LoadedStateType) {
                 final type = state.element;
+                List<ListSchema> listOfLists = [
+                  new ListSchema(
+                    listName: "${widget.name} pokemon",
+                    typeName: type.name,
+                    color: returnColor(type.name),
+                    optionsList: type.pokemon,
+                  ),
+                  new ListSchema(
+                      listName: '${widget.name} moves',
+                      typeName: type.name,
+                      color: returnColor(type.name),
+                      optionsList: type.moves)
+                ];
                 return Container(
                   child: Center(
                     child: Container(
@@ -52,123 +66,20 @@ class _TypeState extends State<Type> {
                             children: <Widget>[
                               Column(
                                 children: <Widget>[
-                                  Text(
-                                    '${widget.name} pokemon',
-                                    style: TextStyle(
-                                      color: returnColor(type.name),
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Container(
-                                    height: (type.pokemon.length * 42 + 40),
-                                    constraints: BoxConstraints(
-                                      maxHeight: 250,
-                                    ),
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.4,
-                                    color: Colors.white,
-                                    padding: const EdgeInsets.only(
-                                      top: 20,
-                                      bottom: 20,
-                                    ),
-                                    margin: EdgeInsets.only(
-                                      top: 20,
-                                      bottom: 20,
-                                      left: MediaQuery.of(context).size.width *
-                                          0.05,
-                                      right: MediaQuery.of(context).size.width *
-                                          0.05,
-                                    ),
-                                    child: ListView.builder(
-                                      padding: EdgeInsets.all(0),
-                                      itemCount: type.pokemon.length,
-                                      itemBuilder: (context, index) =>
-                                          Container(
-                                        height: 42,
-                                        child: TextButton(
-                                          onPressed: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) => Pokemon(
-                                                  url: type.pokemon[index].url,
-                                                  name: type.pokemon[index]
-                                                      .pokemonName,
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          child: Text(
-                                            type.pokemon[index].pokemonName,
-                                            style: TextStyle(
-                                              color: returnColor(type.name),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
+                                  TypeDetails(
+                                      typeName: listOfLists[0].typeName,
+                                      listName: listOfLists[0].listName,
+                                      color: listOfLists[0].color,
+                                      optionsList: listOfLists[0].optionsList),
                                 ],
                               ),
                               Column(
                                 children: <Widget>[
-                                  Text(
-                                    '${widget.name} moves',
-                                    style: TextStyle(
-                                      color: returnColor(type.name),
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Container(
-                                    height: (type.moves.length * 42 + 40),
-                                    constraints: BoxConstraints(
-                                      maxHeight: 250,
-                                    ),
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.4,
-                                    color: Colors.white,
-                                    padding: const EdgeInsets.only(
-                                      top: 20,
-                                      bottom: 20,
-                                    ),
-                                    margin: EdgeInsets.only(
-                                      top: 20,
-                                      bottom: 20,
-                                      left: MediaQuery.of(context).size.width *
-                                          0.05,
-                                      right: MediaQuery.of(context).size.width *
-                                          0.05,
-                                    ),
-                                    child: ListView.builder(
-                                      padding: EdgeInsets.all(0),
-                                      itemCount: type.moves.length,
-                                      itemBuilder: (context, index) =>
-                                          Container(
-                                        height: 42,
-                                        alignment: Alignment.center,
-                                        child: TextButton(
-                                          onPressed: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) => Move(
-                                                  url: type.moves[index].url,
-                                                  name: type.moves[index].name,
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          child: Text(
-                                            type.moves[index].name,
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              color: returnColor(type.name),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
+                                  TypeDetails(
+                                      typeName: listOfLists[1].typeName,
+                                      listName: listOfLists[1].listName,
+                                      color: listOfLists[1].color,
+                                      optionsList: listOfLists[1].optionsList),
                                 ],
                               ),
                             ],

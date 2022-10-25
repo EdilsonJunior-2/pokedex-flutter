@@ -1,6 +1,4 @@
-import 'package:pokedex/cubit/type_list/type_list_model.dart';
-import 'package:pokedex/cubit/pokemon_list/pokemon_list_model.dart';
-import 'package:pokedex/cubit/move_list/move_list_model.dart';
+import 'package:pokedex/schemas.dart';
 
 class TypeModel{
   const TypeModel({
@@ -16,12 +14,12 @@ class TypeModel{
 });
 
   final String name;
-  final List<TypeListModel> doubleDamageTo;
-  final List<TypeListModel> doubleDamageFrom;
-  final List<TypeListModel> halfDamageTo;
-  final List<TypeListModel> halfDamageFrom;
-  final List<TypeListModel> noDamageTo;
-  final List<TypeListModel> noDamageFrom;
-  final List<MoveListModel> moves;
-  final List<PokemonListModel> pokemon;
+  final List<OptionsList> doubleDamageTo;
+  final List<OptionsList> doubleDamageFrom;
+  final List<OptionsList> halfDamageTo;
+  final List<OptionsList> halfDamageFrom;
+  final List<OptionsList> noDamageTo;
+  final List<OptionsList> noDamageFrom;
+  final List<OptionsList> moves;
+  final List<OptionsList> pokemon;
 }

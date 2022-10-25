@@ -93,13 +93,13 @@ class _AbilityState extends State<Ability> {
                                       builder: (context) => Pokemon(
                                         url: ability.listOfPokemon[index].url,
                                         name: ability
-                                            .listOfPokemon[index].pokemonName,
+                                            .listOfPokemon[index].name,
                                       ),
                                     ),
                                   );
                                 },
                                 child: Text(
-                                  ability.listOfPokemon[index].pokemonName,
+                                  ability.listOfPokemon[index].name,
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: returnColorByGeneration(

@@ -1,4 +1,4 @@
-import 'package:pokedex/cubit/pokemon_list/pokemon_list_model.dart';
+import 'package:pokedex/schemas.dart';
 
 class AbilityModel {
   const AbilityModel({
@@ -10,6 +10,6 @@ class AbilityModel {
 
   final String name;
   final String description;
-  final List<PokemonListModel> listOfPokemon;
+  final List<OptionsList> listOfPokemon;
   final String generation;
 }

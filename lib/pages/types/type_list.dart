@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/cubit/type_list/type_list_model.dart';
+import 'package:pokedex/schemas.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/cubit/type_list/type_list_repo.dart';
 import 'package:pokedex/cubit/type_list/type_list_cubit.dart';
@@ -27,16 +27,13 @@ class ColorList {
 
 class _TypeListPageState extends State<TypeListPage> {
 
-
-
-  List<TypeListModel> types = [];
+  List<OptionsList> types = [];
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFA8A878),
         title: Text("Types"),
       ),
       body: Column(

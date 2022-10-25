@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pokedex/cubit/pokemon_list/pokemon_list_model.dart';
+import 'package:pokedex/schemas.dart';
 import 'package:pokedex/pages/pokemon/pokemon_list_generation.dart';
 
 class PokemonListPage extends StatefulWidget {
@@ -11,7 +11,7 @@ class PokemonListPage extends StatefulWidget {
 }
 
 class _PokemonListPageState extends State<PokemonListPage> {
-  late List<PokemonListModel> pokemonList;
+  late List<OptionsList> pokemonList;
 
   @override
   Widget build(BuildContext context) {

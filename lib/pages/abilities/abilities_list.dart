@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/cubit/abilities/abilities_model.dart';
+import 'package:pokedex/schemas.dart';
 import 'package:pokedex/pages/abilities/ability.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/cubit/abilities/abilities_repo.dart';
@@ -16,7 +16,7 @@ class AbilitiesPage extends StatefulWidget {
 
 class _AbilitiesPageState extends State<AbilitiesPage> {
 
-  late List<AbilitiesModel> abilities;
+  late List<OptionsList> abilities;
 
   @override
   Widget build(BuildContext context) {

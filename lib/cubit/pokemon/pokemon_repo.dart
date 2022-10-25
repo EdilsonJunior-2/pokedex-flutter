@@ -1,10 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:pokedex/cubit/location_list/location_list_model.dart';
 import 'package:pokedex/cubit/pokemon/pokemon_model.dart';
-import 'package:pokedex/cubit/move_list/move_list_model.dart';
-import 'package:pokedex/cubit/abilities/abilities_model.dart';
-import 'package:pokedex/cubit/type_list/type_list_model.dart';
 import 'package:pokedex/cubit/stats/stats_model.dart';
+import 'package:pokedex/schemas.dart';
 
 class PokemonRepo {
   PokemonRepo();
@@ -41,9 +39,9 @@ class PokemonRepo {
       final finalFlavorText =
           flavorTextEntries[0]['flavor_text'].toString().replaceAll("\n", " ");
 
-      final abilities = List<AbilitiesModel>.of(
-        response2.data["abilities"].map<AbilitiesModel>(
-          (json) => AbilitiesModel(
+      final abilities = List<OptionsList>.of(
+        response2.data["abilities"].map<OptionsList>(
+          (json) => OptionsList(
             name: json['ability']['name'],
             url: json['ability']['url'],
           ),
@@ -66,9 +64,9 @@ class PokemonRepo {
             ),
       );
 
-      final moves = List<MoveListModel>.of(
-        response2.data['moves'].map<MoveListModel>(
-          (json) => MoveListModel(
+      final moves = List<OptionsList>.of(
+        response2.data['moves'].map<OptionsList>(
+          (json) => OptionsList(
             name: json['move']['name'],
             url: json['move']['url'],
           ),
@@ -76,9 +74,9 @@ class PokemonRepo {
       );
       moves.sort((a, b) => a.name.toString().compareTo(b.name.toString()));
 
-      final types = List<TypeListModel>.of(
-        response2.data['types'].map<TypeListModel>(
-          (json) => TypeListModel(
+      final types = List<OptionsList>.of(
+        response2.data['types'].map<OptionsList>(
+          (json) => OptionsList(
             name: json['type']['name'],
             url: json['type']['url'],
           ),

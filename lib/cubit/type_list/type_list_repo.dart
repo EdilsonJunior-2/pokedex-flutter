@@ -1,18 +1,18 @@
 import 'package:dio/dio.dart';
-import 'package:pokedex/cubit/type_list/type_list_model.dart';
+import 'package:pokedex/schemas.dart';
 
 class TypeListRepo {
  TypeListRepo();
 
   Dio client = Dio();
 
- Future<List<TypeListModel>> getTypes(String url) async {
+ Future<List<OptionsList>> getTypes(String url) async {
     try {
       final response = await client.get(url);
 
-      final types = List<TypeListModel>.of(
-          response.data['results'].map<TypeListModel>(
-              (json) => TypeListModel(
+      final types = List<OptionsList>.of(
+          response.data['results'].map<OptionsList>(
+              (json) => OptionsList(
             name: json['name'],
             url: json['url'],
           ),

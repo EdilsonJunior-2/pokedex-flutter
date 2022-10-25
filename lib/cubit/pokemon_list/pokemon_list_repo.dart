@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:pokedex/cubit/pokemon_list/pokemon_list_model.dart';
+import 'package:pokedex/schemas.dart';
 import 'package:pokedex/pages/type_colors.dart';
 
 class PokemonListRepo {
@@ -15,16 +15,16 @@ class PokemonListRepo {
     return returnColor(color);
   }
 
-  Future<List<PokemonListModel>> getPokemonList(String url) async {
+  Future<List<OptionsList>> getPokemonList(String url) async {
     try {
       final response = await client.get(url);
       final pokemonSpecies = response.data['pokemon_species'];
       pokemonSpecies
           .sort((a, b) => a['name'].toString().compareTo(b['name'].toString()));
-      final pokemonList = List<PokemonListModel>.of(
-        pokemonSpecies.map<PokemonListModel>(
-          (json) => PokemonListModel(
-            pokemonName: json['name'],
+      final pokemonList = List<OptionsList>.of(
+        pokemonSpecies.map<OptionsList>(
+          (json) => OptionsList(
+            name: json['name'],
             url: json['url'],
           ),
         ),

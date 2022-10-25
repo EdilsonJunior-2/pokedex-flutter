@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:pokedex/cubit/state.dart';
-import 'package:pokedex/cubit/pokemon_list/pokemon_list_model.dart';
+import 'package:pokedex/schemas.dart';
 import 'package:pokedex/cubit/pokemon_list/pokemon_list_repo.dart';
 import 'package:pokedex/cubit/pokemon_list/pokemon_list_cubit.dart';
 
@@ -23,7 +23,7 @@ class PokemonListGenerationPage extends StatefulWidget {
 
 class _PokemonListGenerationPageState extends State<PokemonListGenerationPage> {
 
-  late List<PokemonListModel> pokemonList;
+  late List<OptionsList> pokemonList;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +59,7 @@ class _PokemonListGenerationPageState extends State<PokemonListGenerationPage> {
                             MaterialPageRoute(
                               builder: (context) => Pokemon(
                                 url: pokemonList[index].url,
-                                name: pokemonList[index].pokemonName,
+                                name: pokemonList[index].name,
                               ),
                             ),
                           );
@@ -67,7 +67,7 @@ class _PokemonListGenerationPageState extends State<PokemonListGenerationPage> {
                         child: Card(
                           child: ListTile(
                             tileColor: Colors.white,
-                            title: Text(pokemonList[index].pokemonName),
+                            title: Text(pokemonList[index].name),
                           ),
                         ),
                       ),

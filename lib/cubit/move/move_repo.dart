@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:pokedex/cubit/pokemon_list/pokemon_list_model.dart';
+import 'package:pokedex/schemas.dart';
 import 'package:pokedex/cubit/type_list/type_list_model.dart';
 import 'package:pokedex/cubit/move/move_model.dart';
 
@@ -11,10 +11,10 @@ class MoveRepo {
     try {
       final response = await client.get(url);
 
-      final pokemon = List<PokemonListModel>.of(
-        response.data['learned_by_pokemon'].map<PokemonListModel>(
-          (json) => PokemonListModel(
-            pokemonName: json['name'],
+      final pokemon = List<OptionsList>.of(
+        response.data['learned_by_pokemon'].map<OptionsList>(
+          (json) => OptionsList(
+            name: json['name'],
             url: json['url'],
           ),
         ),

@@ -1,4 +1,4 @@
-import 'package:pokedex/cubit/pokemon_list/pokemon_list_model.dart';
+import 'package:pokedex/schemas.dart';
 import 'package:pokedex/cubit/type_list/type_list_model.dart';
 
 class MoveModel {
@@ -12,7 +12,7 @@ class MoveModel {
     required this.type,
   });
 
-  final List<PokemonListModel> pokemon;
+  final List<OptionsList> pokemon;
   final String description;
   final String effect;
   final String pp;

@@ -1,6 +1,4 @@
-import 'package:pokedex/cubit/abilities/abilities_model.dart';
-import 'package:pokedex/cubit/type_list/type_list_model.dart';
-import 'package:pokedex/cubit/move_list/move_list_model.dart';
+import 'package:pokedex/schemas.dart';
 import 'package:pokedex/cubit/location_list/location_list_model.dart';
 import 'package:pokedex/cubit/stats/stats_model.dart';
 class PokemonModel {
@@ -18,9 +16,9 @@ class PokemonModel {
   });
 
   final String pokemonName;
-  final List<AbilitiesModel> abilities;
-  final List<MoveListModel> moves;
-  final List<TypeListModel> types;
+  final List<OptionsList> abilities;
+  final List<OptionsList> moves;
+  final List<OptionsList> types;
   final List<StatsModel> stats;
   final String spriteUrl;
   final String spriteUrlShiny;

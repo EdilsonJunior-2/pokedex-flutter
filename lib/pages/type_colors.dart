@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/themes/color.dart';
 
 class ColorList {
   const ColorList({
@@ -24,74 +25,74 @@ returnColor(String name) {
 List<ColorList> colors = [
   new ColorList(
     name: "normal",
-    color: Color(0xFFA8A878),
+    color: CustomColors.NormalColor,
   ),
   new ColorList(
     name: "grass",
-    color: Color(0xFF78C850),
+    color: CustomColors.GrassColor,
   ),
   new ColorList(
     name: "fire",
-    color: Color(0xFFF08030),
+    color: CustomColors.FireColor,
   ),
   new ColorList(
     name: "water",
-    color: Color(0xFF6890F0),
+    color: CustomColors.WaterColor,
   ),
   new ColorList(
     name: "bug",
-    color: Color(0xFFA8B820),
+    color: CustomColors.BugColor,
   ),
   new ColorList(
     name: "poison",
-    color: Color(0xFFA040A0),
+    color: CustomColors.PoisonColor,
   ),
   new ColorList(
     name: "electric",
-    color: Color(0xFFF8D030),
+    color: CustomColors.ElectricColor,
   ),
   new ColorList(
     name: "ground",
-    color: Color(0xFFE0C068),
+    color: CustomColors.GroundColor,
   ),
   new ColorList(
     name: "fairy",
-    color: Color(0xFFEE99AC),
+    color: CustomColors.FairyColor,
   ),
   new ColorList(
     name: "fighting",
-    color: Color(0xFFC03028),
+    color: CustomColors.FightingColor,
   ),
   new ColorList(
     name: "flying",
-    color: Color(0xFFB3B3FF),
+    color: CustomColors.FlyingColor,
   ),
   new ColorList(
     name: "steel",
-    color: Color(0xFFC0C0C0),
+    color: CustomColors.SteelColor,
   ),
   new ColorList(
     name: "dark",
-    color: Color(0xFF3E223A),
+    color: CustomColors.DarkColor,
   ),
   new ColorList(
     name: "psychic",
-    color: Color(0xFFF85888),
+    color: CustomColors.PsychicColor,
   ),
   new ColorList(
     name: "rock",
-    color: Color(0xFFB8A038),
+    color: CustomColors.RockColor,
   ),
   new ColorList(
     name: "ice",
-    color: Color(0xFF98D8D8),
+    color: CustomColors.IceColor,
   ),
   new ColorList(
     name: "ghost",
-    color: Color(0xFF705898),
+    color: CustomColors.GhostColor,
   ),
   new ColorList(
     name: "dragon",
-    color: Color(0xFF7038F8),
+    color: CustomColors.DragonColor,
   ),
 ];

@@ -194,13 +194,13 @@ class _MoveState extends State<Move> {
                                             builder: (context) => Pokemon(
                                               url: move.pokemon[index].url,
                                               name: move
-                                                  .pokemon[index].pokemonName,
+                                                  .pokemon[index].name,
                                             ),
                                           ),
                                         );
                                       },
                                       child: Text(
-                                        move.pokemon[index].pokemonName,
+                                        move.pokemon[index].name,
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: returnColor(
