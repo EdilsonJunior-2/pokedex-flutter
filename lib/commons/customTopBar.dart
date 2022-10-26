@@ -39,7 +39,7 @@ class _CustomTopBarState extends State<CustomTopBar> {
                 ),
               ),
               Container(
-                width: MediaQuery.of(context).size.width * 0.7,
+                width: MediaQuery.of(context).size.width * 0.6,
                 alignment: Alignment.center,
                 child: Text(
                   widget.title.toTitleCase(),

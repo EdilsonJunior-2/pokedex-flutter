@@ -78,11 +78,9 @@ class _PokemonListGenerationPageState extends State<PokemonListGenerationPage> {
                               children: [
                                 Text(
                                   pokemonList[index].name,
-
                                   style: const TextStyle(
-                                    fontSize: 20,
+                                      fontSize: 20,
                                       fontWeight: FontWeight.bold),
-
                                 ),
                                 Image.network(
                                     hasString(pokemonList[index].image))

@@ -15,7 +15,6 @@ class AbilitiesPage extends StatefulWidget {
 }
 
 class _AbilitiesPageState extends State<AbilitiesPage> {
-
   late List<OptionsList> abilities;
 
   @override
@@ -24,20 +23,13 @@ class _AbilitiesPageState extends State<AbilitiesPage> {
       appBar: AppBar(
         backgroundColor: Color(0xFF78C850),
         title: Text("Abilities"),
-        /*actions: <Widget>[
-          IconButton(
-              onPressed: () {},
-              icon: Container(
-                  child: Icon(Icons.search)
-              ),
-          ),
-        ],*/
       ),
       body: Column(
         children: <Widget>[
           BlocProvider<AbilitiesCubit>(
             create: (context) => AbilitiesCubit(repository: AbilitiesRepo())
-              ..getAbilities('https://pokeapi.co/api/v2/ability?offset=0&limit=327'),
+              ..getAbilities(
+                  'https://pokeapi.co/api/v2/ability?offset=0&limit=327'),
             child: BlocBuilder<AbilitiesCubit, StateClass>(
               builder: (context, state) {
                 if (state is LoadingState) {
@@ -66,8 +58,12 @@ class _AbilitiesPageState extends State<AbilitiesPage> {
                         },
                         child: Card(
                           child: ListTile(
-                            tileColor: Colors.white,
-                            title: Text(abilities[index].name),
+                            tileColor: Colors.black45,
+                            title: Text(
+                              abilities[index].name,
+                              style: const TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
                           ),
                         ),
                       ),

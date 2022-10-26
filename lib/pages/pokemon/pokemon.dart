@@ -8,6 +8,7 @@ import 'package:pokedex/cubit/state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/pages/types/type.dart';
 import 'package:pokedex/pages/moves/move.dart';
+import 'package:pokedex/helpers/utils.dart';
 
 import 'package:pokedex/functions.dart';
 import 'package:pokedex/pages/type_colors.dart';
@@ -40,7 +41,10 @@ class _PokemonState extends State<Pokemon> {
                 final pokemon = state.element;
                 final statsOrder = [0, 5, 1, 2, 3, 4];
                 return Container(
-                  width: MediaQuery.of(context).size.width * 1,
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  margin: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width * .05,
+                      right: MediaQuery.of(context).size.width * .05),
                   child: Column(
                     children: [
                       CustomTopBar(
@@ -244,7 +248,7 @@ class _PokemonState extends State<Pokemon> {
                                           );
                                         },
                                         child: Text(
-                                          pokemon.moves[index].name,
+                                          pokemon.moves[index].name.toTitleCase(),
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
@@ -308,7 +312,7 @@ class _PokemonState extends State<Pokemon> {
                                           );
                                         },
                                         child: Text(
-                                          pokemon.abilities[index].name,
+                                          pokemon.abilities[index].name.toTitleCase(),
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: returnColor(

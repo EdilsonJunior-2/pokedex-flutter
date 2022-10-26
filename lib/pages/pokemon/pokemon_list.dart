@@ -19,12 +19,6 @@ class _PokemonListPageState extends State<PokemonListPage> {
       appBar: AppBar(
         backgroundColor: Color(0xFF98D8D8),
         title: Text("Pokemon List"),
-        /*actions: <Widget>[
-          IconButton(
-            onPressed: () {},
-            icon: Container(child: Icon(Icons.search),),
-          ),
-        ],*/
       ),
       body: Container(
         margin: const EdgeInsets.only(top: 30),

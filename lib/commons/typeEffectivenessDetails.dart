@@ -25,6 +25,18 @@ class TypeEffectivenessDetails extends StatefulWidget {
 }
 
 class _TypeEffectivenessDetailsState extends State<TypeEffectivenessDetails> {
+  final int elementsPerLine = 3;
+  getMarginValues(int index, String position){
+    switch (position){
+      case "left":
+        if(index == 0) return 0;
+        return (.15/4);
+      default:
+        if(index == 2) return 0;
+        return (.15/4);
+    }
+  }
+
   gridElements() {
     List<Container> elements = [];
     for (int i = 0; i < widget.list.length; i++) {
@@ -32,10 +44,9 @@ class _TypeEffectivenessDetailsState extends State<TypeEffectivenessDetails> {
         Container(
           width: MediaQuery.of(context).size.width * 0.25,
           margin: EdgeInsets.only(
-            left: MediaQuery.of(context).size.width * (.15/6),
-            right: MediaQuery.of(context).size.width * (.15/6),
-            top: 10
-          ),
+              left: MediaQuery.of(context).size.width * getMarginValues(i%elementsPerLine, "left"),
+              right: MediaQuery.of(context).size.width *  getMarginValues(i%elementsPerLine, "right"),
+              top: 10),
           child: TypeBox(
             bgColor: returnColor(widget.list[i].name),
             text: widget.list[i].name,
@@ -45,7 +56,6 @@ class _TypeEffectivenessDetailsState extends State<TypeEffectivenessDetails> {
           ),
         ),
       );
-
     }
     return elements;
   }
@@ -70,14 +80,8 @@ class _TypeEffectivenessDetailsState extends State<TypeEffectivenessDetails> {
               margin: EdgeInsets.only(
                 top: 20,
                 bottom: 20,
-                left: MediaQuery.of(context).size.width * 0.05,
-                right: MediaQuery.of(context).size.width * 0.05,
               ),
-              child: Grid(
-                  elements: [...gridElements()],
-                  elementsPerLine:
-                      3)
-              ),
+              child: Grid(elements: [...gridElements()], elementsPerLine: elementsPerLine)),
         ],
       ),
     );

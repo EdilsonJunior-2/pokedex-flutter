@@ -11,5 +11,5 @@ getFrontDefaultSpriteUrl(){
 hasString(String? str){
   if(str != null)
     return str;
-  return "";
+  return "---";
 }

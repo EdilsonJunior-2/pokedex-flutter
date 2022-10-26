@@ -6,6 +6,7 @@ import 'package:pokedex/cubit/state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/functions.dart';
 import 'package:pokedex/pages/generation_colors.dart';
+import 'package:pokedex/helpers/utils.dart';
 
 class Ability extends StatefulWidget {
   Ability({Key? key, required this.url, required this.name}) : super(key: key);
@@ -35,7 +36,7 @@ class _AbilityState extends State<Ability> {
                 final ability = state.element;
                 return Container(
                   margin: const EdgeInsets.only(
-                    top: 35,
+                    top: 20,
                     left: 20,
                     right: 20,
                     bottom: 20,
@@ -44,7 +45,7 @@ class _AbilityState extends State<Ability> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        appBarUsingGeneration(context, widget.name, ability.generation),
+                        appBarUsingGeneration(context, widget.name.toTitleCase(), ability.generation),
                         Text(
                           ability.description,
                           textAlign: TextAlign.center,
@@ -99,7 +100,7 @@ class _AbilityState extends State<Ability> {
                                   );
                                 },
                                 child: Text(
-                                  ability.listOfPokemon[index].name,
+                                  ability.listOfPokemon[index].name.toTitleCase(),
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: returnColorByGeneration(

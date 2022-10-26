@@ -13,10 +13,12 @@ class ListSchema {
     required this.listName,
     required this.typeName,
     required this.color,
-    required this.optionsList
+    required this.optionsList,
+    required this.function,
   });
   final String listName;
   final String typeName;
   final Color color;
   final List<OptionsList> optionsList;
+  final Function(int index) function;
 }

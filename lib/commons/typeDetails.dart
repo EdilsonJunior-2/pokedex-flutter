@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/pages/type_colors.dart';
-import 'package:pokedex/pages/pokemon/pokemon.dart';
 import 'package:pokedex/helpers/schemas.dart';
+import 'package:pokedex/helpers/utils.dart';
 
 class TypeDetails extends StatefulWidget {
   TypeDetails({
@@ -10,12 +10,14 @@ class TypeDetails extends StatefulWidget {
     required this.listName,
     required this.color,
     required this.optionsList,
+    required this.function
   }) : super(key: key);
 
   final String typeName;
   final String listName;
   final Color color;
   final List<OptionsList> optionsList;
+  final Function(int index) function;
   @override
   _TypeDetailsState createState() => _TypeDetailsState();
 }
@@ -46,8 +48,8 @@ class _TypeDetailsState extends State<TypeDetails> {
         margin: EdgeInsets.only(
           top: 20,
           bottom: 20,
-          left: MediaQuery.of(context).size.width * 0.05,
-          right: MediaQuery.of(context).size.width * 0.05,
+          left: MediaQuery.of(context).size.width * 0.025,
+          right: MediaQuery.of(context).size.width * 0.025,
         ),
         child: ListView.builder(
           padding: EdgeInsets.all(0),
@@ -56,18 +58,10 @@ class _TypeDetailsState extends State<TypeDetails> {
             height: 42,
             child: TextButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Pokemon(
-                      url: widget.optionsList[index].url,
-                      name: widget.optionsList[index].name,
-                    ),
-                  ),
-                );
+                widget.function(index);
               },
               child: Text(
-                widget.optionsList[index].name,
+                widget.optionsList[index].name.toTitleCase(),
                 style: TextStyle(
                   color: returnColor(widget.typeName),
                 ),

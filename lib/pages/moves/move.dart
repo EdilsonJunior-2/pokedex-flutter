@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/commons/customTopBar.dart';
+import 'package:pokedex/commons/typeBox.dart';
 import 'package:pokedex/functions.dart';
 import 'package:pokedex/cubit/move/move_repo.dart';
 import 'package:pokedex/cubit/move/move_cubit.dart';
 import 'package:pokedex/cubit/state.dart';
 import 'package:pokedex/pages/type_colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:pokedex/helpers/utils.dart';
 import 'package:pokedex/pages/types/type.dart';
 import 'package:pokedex/pages/pokemon/pokemon.dart';
 
@@ -47,23 +49,20 @@ class _MoveState extends State<Move> {
                 return Container(
                   child: Center(
                     child: Container(
-                      width: MediaQuery.of(context).size.width,
+                      width: MediaQuery.of(context).size.width * .9,
+                      margin: EdgeInsets.only(
+                        left: MediaQuery.of(context).size.width * .05,
+                        right: MediaQuery.of(context).size.width * .05,
+                        bottom: 20,
+                      ),
                       constraints: BoxConstraints(
                         minHeight: MediaQuery.of(context).size.height * 0.5,
                       ),
-                      margin: const EdgeInsets.only(
-                        top: 35,
-                        bottom: 20,
-                        left: 20,
-                        right: 20,
-                      ),
                       child: Column(
                         children: <Widget>[
-                          appBarUsingType(
-                            context,
-                            widget.name,
-                            move.type.name,
-                          ),
+                          CustomTopBar(
+                              title: widget.name,
+                              color: returnColor(move.type.name)),
                           Text(
                             move.description,
                             textAlign: TextAlign.center,
@@ -98,23 +97,24 @@ class _MoveState extends State<Move> {
                               move.type.name,
                             ),
                           ),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => Type(
-                                    url: move.type.url,
-                                    name: move.type.name,
-                                    color: returnColor(move.type.name),
+                          Container(
+                            width: MediaQuery.of(context).size.width * .3,
+                            margin: EdgeInsets.only(bottom: 10),
+                            child: TypeBox(
+                              bgColor: returnColor(move.type.name),
+                              text: move.type.name.toTitleCase(),
+                              function: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => Type(
+                                      url: move.type.url,
+                                      name: move.type.name,
+                                      color: returnColor(move.type.name),
+                                    ),
                                   ),
-                                ),
-                              );
-                            },
-                            child: Text(
-                              "Type: ${move.type.name}",
-                              textAlign: TextAlign.center,
-                              style: textStyle(move.type.name),
+                                );
+                              },
                             ),
                           ),
                           Text(
@@ -134,7 +134,7 @@ class _MoveState extends State<Move> {
                                 style: textStyle(move.type.name),
                               ),
                               Text(
-                                "Power: ${isNullOrNot(move.power)}",
+                                "Power: ${hasString(move.power)}",
                                 textAlign: TextAlign.center,
                                 style: textStyle(move.type.name),
                               ),
@@ -193,8 +193,7 @@ class _MoveState extends State<Move> {
                                           MaterialPageRoute(
                                             builder: (context) => Pokemon(
                                               url: move.pokemon[index].url,
-                                              name: move
-                                                  .pokemon[index].name,
+                                              name: move.pokemon[index].name,
                                             ),
                                           ),
                                         );
