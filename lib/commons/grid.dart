@@ -28,7 +28,7 @@ class _GridState extends State<Grid> {
     var size = widget.elements.length / widget.elementsPerLine;
     for (int i = 0; size.truncate() >= i; i++) {
       rowsList.add(
-          Row(crossAxisAlignment: CrossAxisAlignment.start, children: <Widget>[
+          Row(crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.max, children: <Widget>[
         ...columns(widget.elementsPerLine * i, widget.elementsPerLine * (i + 1))
       ]));
     }

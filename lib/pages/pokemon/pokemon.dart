@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/commons/customTopBar.dart';
+import 'package:pokedex/commons/typeBox.dart';
 import 'package:pokedex/cubit/pokemon/pokemon_cubit.dart';
 import 'package:pokedex/cubit/pokemon/pokemon_repo.dart';
 import 'package:pokedex/pages/abilities/ability.dart';
@@ -42,7 +43,9 @@ class _PokemonState extends State<Pokemon> {
                   width: MediaQuery.of(context).size.width * 1,
                   child: Column(
                     children: [
-                      CustomTopBar(title: widget.name, color: returnColor(pokemon.types[0].name)),
+                      CustomTopBar(
+                          title: widget.name,
+                          color: returnColor(pokemon.types[0].name)),
                       Image.network(
                         pokemon.imageUrl,
                         width: 120,
@@ -58,34 +61,28 @@ class _PokemonState extends State<Pokemon> {
                           itemCount: pokemon.types.length,
                           padding: EdgeInsets.all(0),
                           itemBuilder: (context, index) => Container(
-                            height: 42,
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Type(
-                                      url: pokemon.types[index].url,
-                                      name: pokemon.types[index].name,
-                                      color: returnColor(
-                                        pokemon.types[index].name,
+                              height: 30,
+                              margin: EdgeInsets.only(bottom: 10),
+                              child: TypeBox(
+                                bgColor: returnColor(
+                                  pokemon.types[index].name,
+                                ),
+                                text: pokemon.types[index].name,
+                                function: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Type(
+                                        url: pokemon.types[index].url,
+                                        name: pokemon.types[index].name,
+                                        color: returnColor(
+                                          pokemon.types[index].name,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                );
-                              },
-                              child: Text(
-                                pokemon.types[index].name,
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold,
-                                  color: returnColor(
-                                    pokemon.types[index].name,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
+                                  );
+                                },
+                              )),
                         ),
                       ),
                       Container(

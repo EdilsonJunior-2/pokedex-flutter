@@ -91,7 +91,9 @@ class _TypeState extends State<Type> {
                                     typeName: listOfLists[1].typeName,
                                     listName: listOfLists[1].listName,
                                     color: listOfLists[1].color,
-                                    optionsList: listOfLists[1].optionsList)),
+                                    optionsList: listOfLists[1].optionsList))
+                          ], elementsPerLine: 2),
+                          Grid(elements: [
                             Container(
                                 child: TypeEffectivenessDetails(
                                     titleColor: Colors.green,
@@ -102,13 +104,13 @@ class _TypeState extends State<Type> {
                                     list: type.doubleDamageTo)),
                             Container(
                                 child: TypeEffectivenessDetails(
-                              titleColor: Colors.red,
-                              title: 'Half Effective',
-                              function: (int index) {
-                                push(index, type.halfDamageTo);
-                              },
-                              list: type.halfDamageTo,
-                            )),
+                                  titleColor: Colors.red,
+                                  title: 'Half Effective',
+                                  function: (int index) {
+                                    push(index, type.halfDamageTo);
+                                  },
+                                  list: type.halfDamageTo,
+                                )),
                             Container(
                               child: TypeEffectivenessDetails(
                                   titleColor: Colors.green,
@@ -142,7 +144,7 @@ class _TypeState extends State<Type> {
                                       push(index, type.noDamageTo);
                                     },
                                     list: type.noDamageTo))
-                          ], elementsPerLine: 2),
+                          ], elementsPerLine: 1,)
                         ],
                       ),
                     ),

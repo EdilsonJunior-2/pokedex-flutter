@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/commons/grid.dart';
+import 'package:pokedex/commons/typeBox.dart';
 
 import 'package:pokedex/pages/type_colors.dart';
 import 'package:pokedex/helpers/schemas.dart';
@@ -23,6 +25,31 @@ class TypeEffectivenessDetails extends StatefulWidget {
 }
 
 class _TypeEffectivenessDetailsState extends State<TypeEffectivenessDetails> {
+  gridElements() {
+    List<Container> elements = [];
+    for (int i = 0; i < widget.list.length; i++) {
+      elements.add(
+        Container(
+          width: MediaQuery.of(context).size.width * 0.25,
+          margin: EdgeInsets.only(
+            left: MediaQuery.of(context).size.width * (.15/6),
+            right: MediaQuery.of(context).size.width * (.15/6),
+            top: 10
+          ),
+          child: TypeBox(
+            bgColor: returnColor(widget.list[i].name),
+            text: widget.list[i].name,
+            function: () {
+              widget.function(i);
+            },
+          ),
+        ),
+      );
+
+    }
+    return elements;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,41 +63,33 @@ class _TypeEffectivenessDetailsState extends State<TypeEffectivenessDetails> {
             ),
           ),
           Container(
-            height: (widget.list.length * 42 + 40),
-            constraints: BoxConstraints(
-              maxHeight: 250,
-            ),
-            width: MediaQuery.of(context).size.width * 0.4,
-            color: Colors.white,
-            padding: const EdgeInsets.only(
-              top: 20,
-              bottom: 20,
-            ),
-            margin: EdgeInsets.only(
-              top: 20,
-              bottom: 20,
-              left: MediaQuery.of(context).size.width * 0.05,
-              right: MediaQuery.of(context).size.width * 0.05,
-            ),
-            child: ListView.builder(
+              width: MediaQuery.of(context).size.width * 0.9,
+              padding: const EdgeInsets.only(
+                bottom: 20,
+              ),
+              margin: EdgeInsets.only(
+                top: 20,
+                bottom: 20,
+                left: MediaQuery.of(context).size.width * 0.05,
+                right: MediaQuery.of(context).size.width * 0.05,
+              ),
+              child: Grid(
+                  elements: [...gridElements()],
+                  elementsPerLine:
+                      3) /*ListView.builder(
               padding: EdgeInsets.all(0),
               itemCount: widget.list.length,
               itemBuilder: (context, index) => Container(
-                height: 42,
-                child: TextButton(
-                  onPressed: () {
+                child: TypeBox(
+                  bgColor: returnColor(widget.list[index].name),
+                  text: widget.list[index].name,
+                  function: () {
                     widget.function(index);
                   },
-                  child: Text(
-                    widget.list[index].name,
-                    style: TextStyle(
-                      color: returnColor(widget.list[index].name),
-                    ),
-                  ),
                 ),
               ),
-            ),
-          ),
+            ),*/
+              ),
         ],
       ),
     );

@@ -3,11 +3,10 @@ import 'package:pokedex/themes/color.dart';
 import 'package:pokedex/helpers/utils.dart';
 
 class CustomTopBar extends StatefulWidget{
-  CustomTopBar({Key? key, required this.title, this.color: CustomColors.NormalColor, this.hasBackButton: true}): super(key: key);
+  CustomTopBar({Key? key, required this.title, this.color: CustomColors.NormalColor}): super(key: key);
 
   final String title;
   final Color? color;
-  final bool? hasBackButton;
   @override
   _CustomTopBarState createState() => _CustomTopBarState();
 }
@@ -33,7 +32,7 @@ class _CustomTopBarState extends State<CustomTopBar> {
                   icon: const Icon(
                     Icons.arrow_back,
                   ),
-                  color: widget.color,
+                  color: Colors.white,
                   onPressed: () => {
                     Navigator.pop(context),
                   },
