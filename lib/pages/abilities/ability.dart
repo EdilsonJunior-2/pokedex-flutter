@@ -45,7 +45,7 @@ class _AbilityState extends State<Ability> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        appBarUsingGeneration(context, widget.name.toTitleCase(), ability.generation),
+                        appBarUsingGeneration(context, widget.name.toTitleCase(), ability.generation), //TODO: Change this function into a new common
                         Text(
                           ability.description,
                           textAlign: TextAlign.center,
