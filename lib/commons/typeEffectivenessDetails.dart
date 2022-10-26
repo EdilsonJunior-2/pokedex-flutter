@@ -76,19 +76,7 @@ class _TypeEffectivenessDetailsState extends State<TypeEffectivenessDetails> {
               child: Grid(
                   elements: [...gridElements()],
                   elementsPerLine:
-                      3) /*ListView.builder(
-              padding: EdgeInsets.all(0),
-              itemCount: widget.list.length,
-              itemBuilder: (context, index) => Container(
-                child: TypeBox(
-                  bgColor: returnColor(widget.list[index].name),
-                  text: widget.list[index].name,
-                  function: () {
-                    widget.function(index);
-                  },
-                ),
-              ),
-            ),*/
+                      3)
               ),
         ],
       ),
