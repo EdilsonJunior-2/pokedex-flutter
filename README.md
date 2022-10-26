@@ -118,7 +118,7 @@ The app actually shows you 3 main informations: [pokemon](#the-pokemon-species),
   
   Psychic: #F85888
   
-  Ise: #98D8D8
+  Ice: #98D8D8
   
   Dragon: #7038F8
   
