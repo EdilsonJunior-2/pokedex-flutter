@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:pokedex/cubit/type/type_model.dart';
-import 'package:pokedex/schemas.dart';
+import 'package:pokedex/helpers/schemas.dart';
 
 class TypeRepo {
   TypeRepo();

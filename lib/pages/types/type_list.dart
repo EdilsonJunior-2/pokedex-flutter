@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/schemas.dart';
+import 'package:pokedex/helpers/schemas.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/cubit/type_list/type_list_repo.dart';
 import 'package:pokedex/cubit/type_list/type_list_cubit.dart';

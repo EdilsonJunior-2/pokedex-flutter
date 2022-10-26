@@ -21,7 +21,7 @@ class _CustomTopBarState extends State<CustomTopBar> {
         Container(
           margin: const EdgeInsets.only(
             bottom: 10,
-            top: 20,
+            top: 30,
           ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,

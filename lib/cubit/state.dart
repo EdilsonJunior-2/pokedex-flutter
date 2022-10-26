@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:pokedex/cubit/ability/ability_model.dart';
-import 'package:pokedex/schemas.dart';
+import 'package:pokedex/helpers/schemas.dart';
 import 'package:pokedex/cubit/pokemon/pokemon_model.dart';
 import 'package:pokedex/cubit/type/type_model.dart';
 import 'package:pokedex/cubit/move/move_model.dart';

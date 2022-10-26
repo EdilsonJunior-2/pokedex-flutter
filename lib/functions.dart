@@ -10,7 +10,7 @@ isNullOrNot(value) {
 }
 
 int getPokemonNumber(String str){
-  return int.parse(str.replaceAll(new RegExp(r'\D+'), ""));
+  return int.parse(str.replaceAll(new RegExp(r'\D+'), "").replaceFirst("2", ""));
 }
 
 

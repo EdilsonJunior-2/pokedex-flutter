@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:pokedex/functions.dart';
 import 'package:pokedex/pages/type_colors.dart';
-import 'package:pokedex/schemas.dart';
+import 'package:pokedex/helpers/schemas.dart';
 import 'package:pokedex/commons/grid.dart';
 import 'package:pokedex/commons/typeEffectivenessDetails.dart';
 import 'package:pokedex/commons/customTopBar.dart';

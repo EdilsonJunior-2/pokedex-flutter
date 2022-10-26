@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:pokedex/cubit/location_list/location_list_model.dart';
 import 'package:pokedex/cubit/pokemon/pokemon_model.dart';
 import 'package:pokedex/cubit/stats/stats_model.dart';
-import 'package:pokedex/schemas.dart';
+import 'package:pokedex/helpers/schemas.dart';
 
 class PokemonRepo {
   PokemonRepo();

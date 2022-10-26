@@ -1,4 +1,4 @@
-import 'package:pokedex/schemas.dart';
+import 'package:pokedex/helpers/schemas.dart';
 
 class AbilityModel {
   const AbilityModel({

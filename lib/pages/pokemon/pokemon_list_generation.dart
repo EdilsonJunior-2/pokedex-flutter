@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:pokedex/cubit/state.dart';
-import 'package:pokedex/schemas.dart';
+import 'package:pokedex/helpers/utils.dart';
+import 'package:pokedex/helpers/schemas.dart';
 import 'package:pokedex/cubit/pokemon_list/pokemon_list_repo.dart';
 import 'package:pokedex/cubit/pokemon_list/pokemon_list_cubit.dart';
 
@@ -11,18 +12,23 @@ import 'package:pokedex/pages/pokemon/pokemon.dart';
 import 'package:pokedex/functions.dart';
 
 class PokemonListGenerationPage extends StatefulWidget {
-  PokemonListGenerationPage({Key? key, required this.url, required this.generation, required this.color}) : super(key: key);
+  PokemonListGenerationPage(
+      {Key? key,
+      required this.url,
+      required this.generation,
+      required this.color})
+      : super(key: key);
 
   final String url;
   final String generation;
   final Color color;
 
   @override
-  _PokemonListGenerationPageState createState() => _PokemonListGenerationPageState();
+  _PokemonListGenerationPageState createState() =>
+      _PokemonListGenerationPageState();
 }
 
 class _PokemonListGenerationPageState extends State<PokemonListGenerationPage> {
-
   late List<OptionsList> pokemonList;
 
   @override
@@ -66,8 +72,22 @@ class _PokemonListGenerationPageState extends State<PokemonListGenerationPage> {
                         },
                         child: Card(
                           child: ListTile(
-                            tileColor: Colors.white,
-                            title: Text(pokemonList[index].name),
+                            tileColor: Colors.black45,
+                            title: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  pokemonList[index].name,
+
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+
+                                ),
+                                Image.network(
+                                    hasString(pokemonList[index].image))
+                              ],
+                            ),
                           ),
                         ),
                       ),

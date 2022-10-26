@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pokedex/schemas.dart';
+import 'package:pokedex/helpers/schemas.dart';
 import 'package:pokedex/pages/pokemon/pokemon_list_generation.dart';
 
 class PokemonListPage extends StatefulWidget {

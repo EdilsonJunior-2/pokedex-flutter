@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:pokedex/pages/type_colors.dart';
-import 'package:pokedex/schemas.dart';
+import 'package:pokedex/helpers/schemas.dart';
 
 class TypeEffectivenessDetails extends StatefulWidget {
   TypeEffectivenessDetails(

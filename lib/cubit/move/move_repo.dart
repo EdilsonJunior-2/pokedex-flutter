@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:pokedex/schemas.dart';
+import 'package:pokedex/helpers/schemas.dart';
 import 'package:pokedex/cubit/type_list/type_list_model.dart';
 import 'package:pokedex/cubit/move/move_model.dart';
 

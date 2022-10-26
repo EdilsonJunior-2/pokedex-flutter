@@ -1,7 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:pokedex/schemas.dart';
+import 'package:pokedex/helpers/schemas.dart';
 import 'package:pokedex/pages/type_colors.dart';
 import 'package:pokedex/functions.dart';
+import 'package:pokedex/helpers/utils.dart';
 
 class PokemonListRepo {
   PokemonListRepo();
@@ -24,10 +25,12 @@ class PokemonListRepo {
           .compareTo(getPokemonNumber(b['url'].toString())));
       final pokemonList = List<OptionsList>.of(
         pokemonSpecies.map<OptionsList>((json) => OptionsList(
-              name: json['name'],
-              url: json['url'],
-            )),
+            name: json['name'],
+            url: json['url'],
+            image:
+                '${getFrontDefaultSpriteUrl()}/${getPokemonNumber(json['url'].toString())}.png')),
       );
+      print(pokemonList[2].image);
       return pokemonList;
     } catch (e) {
       throw e;

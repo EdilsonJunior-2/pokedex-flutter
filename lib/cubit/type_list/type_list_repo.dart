@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:pokedex/schemas.dart';
+import 'package:pokedex/helpers/schemas.dart';
 
 class TypeListRepo {
  TypeListRepo();
