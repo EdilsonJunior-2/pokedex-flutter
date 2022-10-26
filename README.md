@@ -32,7 +32,7 @@ The app actually shows you 3 main informations: [pokemon](#the-pokemon-species),
   
   ### The pokemon types
   
-  This section shows you all the 18 existing types (and 2 extra that i explain [here](#shadow-and-uknown-types)). Each button color is associated to its type, that you can (again) see, if you want, [here](#type-colors). Clicking on the type, you'll go to a screen with type info:
+  This section shows you all the 18 existing types (and 2 "extra" that i explain [here](#shadow-and-uknown-types)). Each button color is associated to its type, that you can (again) see, if you want, [here](#type-colors). Clicking on the type, you'll go to a screen with type info:
   
   - The moves of this type;
   - The Pokemon that have this type;
@@ -118,7 +118,7 @@ The app actually shows you 3 main informations: [pokemon](#the-pokemon-species),
   
   Psychic: #F85888
   
-  Ise: #98D8D8
+  Ice: #98D8D8
   
   Dragon: #7038F8
   
