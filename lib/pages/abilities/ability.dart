@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/cubit/ability/ability_cubit.dart';
 import 'package:pokedex/cubit/ability/ability_repo.dart';
-import 'package:pokedex/pages/pokemon/pokemon.dart';
+import 'package:pokedex/pages/pokemon/pokemonView.dart';
 import 'package:pokedex/cubit/state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/functions.dart';

@@ -1,3 +1,3 @@
-const pokeapiGeneralLink = "https://pokeapi.co/api/v2";
-const backPokeImageLink =
-    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
+const String pokeapiGeneralLink = "https://pokeapi.co/api/v2";
+const String pokemonImageLink =
+    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon";

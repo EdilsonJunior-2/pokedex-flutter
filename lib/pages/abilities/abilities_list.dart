@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/helpers/schemas.dart';
+import 'package:pokedex/cubit/schemas.dart';
 import 'package:pokedex/pages/abilities/ability.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/cubit/abilities/abilities_repo.dart';

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:pokedex/cubit/ability/ability_model.dart';
-import 'package:pokedex/helpers/schemas.dart';
+import 'package:pokedex/cubit/schemas.dart';
 
 class AbilityRepo {
   AbilityRepo();

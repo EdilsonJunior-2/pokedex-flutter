@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:pokedex/helpers/schemas.dart';
+import 'package:pokedex/cubit/schemas.dart';
 import 'package:pokedex/pages/type_colors.dart';
-import 'package:pokedex/functions.dart';
 import 'package:pokedex/helpers/utils.dart';
 
 class PokemonListRepo {

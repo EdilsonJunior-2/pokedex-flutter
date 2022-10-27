@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:pokedex/helpers/schemas.dart';
+import 'package:pokedex/cubit/schemas.dart';
 
 class AbilitiesRepo {
   AbilitiesRepo();

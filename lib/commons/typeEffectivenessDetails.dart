@@ -3,7 +3,7 @@ import 'package:pokedex/commons/grid.dart';
 import 'package:pokedex/commons/typeBox.dart';
 
 import 'package:pokedex/pages/type_colors.dart';
-import 'package:pokedex/helpers/schemas.dart';
+import 'package:pokedex/cubit/schemas.dart';
 
 class TypeEffectivenessDetails extends StatefulWidget {
   TypeEffectivenessDetails(

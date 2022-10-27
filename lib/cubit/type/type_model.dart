@@ -1,4 +1,4 @@
-import 'package:pokedex/helpers/schemas.dart';
+import 'package:pokedex/cubit/schemas.dart';
 
 class TypeModel{
   const TypeModel({

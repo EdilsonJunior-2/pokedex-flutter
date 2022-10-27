@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/pages/type_colors.dart';
-import 'package:pokedex/helpers/schemas.dart';
+import 'package:pokedex/cubit/schemas.dart';
 import 'package:pokedex/helpers/utils.dart';
 
 class TypeDetails extends StatefulWidget {

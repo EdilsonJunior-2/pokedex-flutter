@@ -1,4 +1,4 @@
-import 'package:pokedex/helpers/schemas.dart';
+import 'package:pokedex/cubit/schemas.dart';
 import 'package:pokedex/cubit/location_list/location_list_model.dart';
 import 'package:pokedex/cubit/stats/stats_model.dart';
 class PokemonModel {

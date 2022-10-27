@@ -9,7 +9,7 @@ import 'package:pokedex/pages/type_colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/helpers/utils.dart';
 import 'package:pokedex/pages/types/type.dart';
-import 'package:pokedex/pages/pokemon/pokemon.dart';
+import 'package:pokedex/pages/pokemon/pokemonView.dart';
 
 class Move extends StatefulWidget {
   Move({Key? key, required this.url, required this.name}) : super(key: key);

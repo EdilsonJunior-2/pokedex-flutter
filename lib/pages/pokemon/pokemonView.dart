@@ -7,6 +7,8 @@ import 'package:pokedex/cubit/pokemon/pokemon_repo.dart';
 import 'package:pokedex/pages/abilities/ability.dart';
 import 'package:pokedex/cubit/state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokedex/pages/pokemon/commons/sprites.dart';
+import 'package:pokedex/pages/pokemon/commons/stats.dart';
 import 'package:pokedex/pages/types/type.dart';
 import 'package:pokedex/pages/moves/move.dart';
 import 'package:pokedex/helpers/utils.dart';
@@ -45,12 +47,10 @@ class _PokemonState extends State<Pokemon> {
                 return error(context, "pokemon");
               } else if (state is LoadedStatePokemon) {
                 final pokemon = state.element;
-                final statsOrder = [0, 5, 1, 2, 3, 4];
+                final textColor = returnColor(pokemon.types[0].name);
                 return Column(
                   children: [
-                    CustomTopBar(
-                        title: widget.name,
-                        color: returnColor(pokemon.types[0].name)),
+                    CustomTopBar(title: widget.name, color: textColor),
                     Container(
                       height: MediaQuery.of(context).size.height - 101,
                       child: ScrollableContainer(
@@ -86,9 +86,7 @@ class _PokemonState extends State<Pokemon> {
                                               builder: (context) => Type(
                                                 url: pokemon.types[index].url,
                                                 name: pokemon.types[index].name,
-                                                color: returnColor(
-                                                  pokemon.types[index].name,
-                                                ),
+                                                color: textColor,
                                               ),
                                             ),
                                           );
@@ -96,63 +94,9 @@ class _PokemonState extends State<Pokemon> {
                                       )),
                                 ),
                               ),
-                              Container(
-                                height: 126,
-                                child: ListView.builder(
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  itemCount: 3,
-                                  padding: EdgeInsets.all(0),
-                                  itemBuilder: (context, index) => Container(
-                                    height: 42,
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.8,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.38,
-                                          margin: const EdgeInsets.only(
-                                            right: 10,
-                                          ),
-                                          child: Text(
-                                            ("${pokemon.stats[statsOrder[2 * index]].name}: ${pokemon.stats[statsOrder[2 * index]].value}"),
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: returnColor(
-                                                pokemon.types[0].name,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.38,
-                                          margin: const EdgeInsets.only(
-                                            left: 10,
-                                          ),
-                                          child: Text(
-                                            ("${pokemon.stats[statsOrder[2 * index + 1]].name}: ${pokemon.stats[statsOrder[2 * index + 1]].value}"),
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: returnColor(
-                                                pokemon.types[0].name,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
+                              Stats(
+                                  statsList: pokemon.stats,
+                                  textColor: textColor),
                               Container(
                                 margin: const EdgeInsets.only(
                                   left: 20.0,
@@ -171,38 +115,7 @@ class _PokemonState extends State<Pokemon> {
                                   ),
                                 ),
                               ),
-                              Row(
-                                children: <Widget>[
-                                  Text(
-                                    'Default',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Text(
-                                    'Shiny',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Image.network(
-                                    pokemon.spriteUrl,
-                                    width: 100,
-                                  ),
-                                  Image.network(
-                                    pokemon.spriteUrlShiny,
-                                    width: 100,
-                                  ),
-                                ],
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                              ),
+                              Sprites(pokemonNumber: getPokemonNumber(widget.url).toString()),
                               Container(
                                 margin: EdgeInsets.only(
                                   bottom: 30,

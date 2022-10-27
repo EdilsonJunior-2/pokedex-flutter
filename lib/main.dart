@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pokedex/pages/home.dart';
 import 'package:pokedex/pages/abilities/abilities_list.dart';
-import 'package:pokedex/pages/pokemon/selectGeneration.dart';
+import 'package:pokedex/pages/pokemon/selectGenerationView.dart';
 import 'package:pokedex/pages/types/type_list.dart';
 
 void main() {

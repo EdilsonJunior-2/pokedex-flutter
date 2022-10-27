@@ -3,11 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:pokedex/cubit/state.dart';
 import 'package:pokedex/helpers/utils.dart';
-import 'package:pokedex/helpers/schemas.dart';
+import 'package:pokedex/cubit/schemas.dart';
 import 'package:pokedex/cubit/pokemon_list/pokemon_list_repo.dart';
 import 'package:pokedex/cubit/pokemon_list/pokemon_list_cubit.dart';
 
-import 'package:pokedex/pages/pokemon/pokemon.dart';
+import 'package:pokedex/pages/pokemon/pokemonView.dart';
 
 import 'package:pokedex/functions.dart';
 

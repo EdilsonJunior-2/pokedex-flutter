@@ -9,11 +9,6 @@ isNullOrNot(value) {
   }
 }
 
-int getPokemonNumber(String str){
-  return int.parse(str.replaceAll(new RegExp(r'\D+'), "").replaceFirst("2", ""));
-}
-
-
 loading(context) {
   return Container(
     height: MediaQuery.of(context).size.height * 0.6,

@@ -15,10 +15,10 @@ class Region {
 List<Region> regionList = [
   Region(name: "Kanto", generationNumber: 1, color: CustomColors.ElectricColor),
   Region(name: "Jotho", generationNumber: 2, color: CustomColors.SteelColor),
-  Region(name: "Hoenn", generationNumber: 1, color: CustomColors.WaterColor),
-  Region(name: "Sinnoh", generationNumber: 1, color: CustomColors.IceColor),
-  Region(name: "Unova", generationNumber: 1, color: CustomColors.PoisonColor),
-  Region(name: "Kalos", generationNumber: 1, color: CustomColors.FairyColor),
-  Region(name: "Alola", generationNumber: 1, color: CustomColors.FlyingColor),
-  Region(name: "Galar", generationNumber: 1, color: CustomColors.DragonColor),
+  Region(name: "Hoenn", generationNumber: 3, color: CustomColors.WaterColor),
+  Region(name: "Sinnoh", generationNumber: 4, color: CustomColors.IceColor),
+  Region(name: "Unova", generationNumber: 5, color: CustomColors.PoisonColor),
+  Region(name: "Kalos", generationNumber: 6, color: CustomColors.FairyColor),
+  Region(name: "Alola", generationNumber: 7, color: CustomColors.FlyingColor),
+  Region(name: "Galar", generationNumber: 8, color: CustomColors.DragonColor),
 ];

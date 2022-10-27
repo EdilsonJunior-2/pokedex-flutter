@@ -1,17 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/commons/strokeText.dart';
 import 'package:pokedex/themes/color.dart';
 import 'package:pokedex/helpers/utils.dart';
 
-class CustomTopBar extends StatefulWidget{
-  CustomTopBar({Key? key, required this.title, this.color: CustomColors.NormalColor}): super(key: key);
+class CustomTopBar extends StatefulWidget {
+  CustomTopBar({Key? key, required this.title, required this.color})
+      : super(key: key);
 
   final String title;
-  final Color? color;
+  final Color color;
   @override
   _CustomTopBarState createState() => _CustomTopBarState();
 }
 
 class _CustomTopBarState extends State<CustomTopBar> {
+  whichTitleFormat() {
+    if ([
+          CustomColors.DarkColor,
+          CustomColors.FightingColor,
+          CustomColors.PoisonColor
+        ].indexOf(widget.color) ==
+        -1)
+      return Text(
+        widget.title.toTitleCase(),
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+          color: widget.color,
+        ),
+      );
+    return StrokeText(
+      text: widget.title.toTitleCase(),
+      textSize: 20,
+      strokeColor: widget.color,
+      textColor: Colors.white,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -41,15 +67,7 @@ class _CustomTopBarState extends State<CustomTopBar> {
               Container(
                 width: MediaQuery.of(context).size.width * 0.6,
                 alignment: Alignment.center,
-                child: Text(
-                  widget.title.toTitleCase(),
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: widget.color,
-                  ),
-                ),
+                child: whichTitleFormat(),
               ),
             ],
           ),

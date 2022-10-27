@@ -8,11 +8,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/functions.dart';
 import 'package:pokedex/pages/moves/move.dart';
 import 'package:pokedex/pages/type_colors.dart';
-import 'package:pokedex/helpers/schemas.dart';
+import 'package:pokedex/cubit/schemas.dart';
 import 'package:pokedex/commons/grid.dart';
 import 'package:pokedex/commons/typeEffectivenessDetails.dart';
 import 'package:pokedex/commons/customTopBar.dart';
-import 'package:pokedex/pages/pokemon/pokemon.dart';
+import 'package:pokedex/pages/pokemon/pokemonView.dart';
 
 class Type extends StatefulWidget {
   Type({Key? key, required this.url, required this.name, required this.color})
