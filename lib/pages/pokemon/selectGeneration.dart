@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pokedex/commons/grid.dart';
 import 'package:pokedex/commons/scrollableContainer.dart';
 import 'package:pokedex/helpers/schemas.dart';
-import 'package:pokedex/pages/pokemon/pokemon_list_generation.dart';
+import 'package:pokedex/pages/pokemon/pokemonList.dart';
 import 'package:pokedex/store/generations.dart';
 import 'package:pokedex/commons/customButton.dart';
 import 'package:pokedex/store/links.dart';
