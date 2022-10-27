@@ -1,7 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pokedex/commons/grid.dart';
+import 'package:pokedex/commons/scrollableContainer.dart';
 import 'package:pokedex/helpers/schemas.dart';
 import 'package:pokedex/pages/pokemon/pokemon_list_generation.dart';
+import 'package:pokedex/store/generations.dart';
+import 'package:pokedex/commons/customButton.dart';
+import 'package:pokedex/store/links.dart';
 
 class PokemonListPage extends StatefulWidget {
   PokemonListPage({Key? key}) : super(key: key);
@@ -13,6 +18,38 @@ class PokemonListPage extends StatefulWidget {
 class _PokemonListPageState extends State<PokemonListPage> {
   late List<OptionsList> pokemonList;
 
+  generations() {
+    return regionList.map(
+      (region) => Container(
+        width: MediaQuery.of(context).size.width * .4,
+        height: MediaQuery.of(context).size.height * .2,
+        margin: EdgeInsets.only(
+            bottom: MediaQuery.of(context).size.width * .05,
+            left: MediaQuery.of(context).size.width * .05,
+            right: MediaQuery.of(context).size.width * .05),
+        child: CustomButton(
+          text: region.name,
+          color: Colors.white,
+          bgColor: region.color,
+          function: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PokemonListGenerationPage(
+                  url: pokeapiGeneralLink +
+                      "/generation/" +
+                      region.generationNumber.toString(),
+                  generation: region.name,
+                  color: region.color,
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,201 +58,15 @@ class _PokemonListPageState extends State<PokemonListPage> {
         title: Text("Pokemon List"),
       ),
       body: Container(
-        margin: const EdgeInsets.only(top: 30),
         width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         alignment: Alignment.center,
-        child: Center(
-          child: Column(
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => PokemonListGenerationPage(
-                                url: 'https://pokeapi.co/api/v2/generation/1',
-                                generation: 'Kanto',
-                                color: Color(0xFF78C850),
-                              ),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          "Kanto",
-                          style: TextStyle(fontSize: 20.0, color: Colors.white),
-                        ),
-                        style: TextButton.styleFrom(
-                          backgroundColor: Color(0xFF78C850),
-                        ),
-                      ),
-                      Container(margin: const EdgeInsets.all(10)),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => PokemonListGenerationPage(
-                                url: 'https://pokeapi.co/api/v2/generation/3',
-                                generation: 'Hooen',
-                                color: Color(0xFF6890F0),
-                              ),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          "Hooen",
-                          style: TextStyle(fontSize: 20.0, color: Colors.white),
-                        ),
-                        style: TextButton.styleFrom(
-                          backgroundColor: Color(0xFF6890F0),
-                        ),
-                      ),
-                      Container(margin: const EdgeInsets.all(10)),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => PokemonListGenerationPage(
-                                url: 'https://pokeapi.co/api/v2/generation/5',
-                                generation: 'Unova',
-                                color: Color(0xFFE0C068),
-                              ),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          "Unova",
-                          style: TextStyle(fontSize: 20.0, color: Colors.white),
-                        ),
-                        style: TextButton.styleFrom(
-                          backgroundColor: Color(0xFFE0C068),
-                        ),
-                      ),
-                      Container(margin: const EdgeInsets.all(10)),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => PokemonListGenerationPage(
-                                url: 'https://pokeapi.co/api/v2/generation/7',
-                                generation: 'Alola',
-                                color: Color(0xFFC03028),
-                              ),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          "Alola",
-                          style: TextStyle(fontSize: 20.0, color: Colors.white),
-                        ),
-                        style: TextButton.styleFrom(
-                          backgroundColor: Color(0xFFC03028),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Container(margin: const EdgeInsets.all(20)),
-                  Column(
-                    children: <Widget>[
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => PokemonListGenerationPage(
-                                url: 'https://pokeapi.co/api/v2/generation/2',
-                                generation: 'Jothoh',
-                                color: Color(0xFFF08030),
-                              ),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          "Jothoh",
-                          style: TextStyle(fontSize: 20.0, color: Colors.white),
-                        ),
-                        style: TextButton.styleFrom(
-                          backgroundColor: Color(0xFFF08030),
-                        ),
-                      ),
-                      Container(margin: const EdgeInsets.all(10)),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => PokemonListGenerationPage(
-                                url: 'https://pokeapi.co/api/v2/generation/4',
-                                generation: 'Sinnoh',
-                                color: Color(0xFFF8D030),
-                              ),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          "Sinnoh",
-                          style: TextStyle(fontSize: 20.0, color: Colors.white),
-                        ),
-                        style: TextButton.styleFrom(
-                          backgroundColor: Color(0xFFF8D030),
-                        ),
-                      ),
-                      Container(margin: const EdgeInsets.all(10)),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => PokemonListGenerationPage(
-                                url: 'https://pokeapi.co/api/v2/generation/6',
-                                generation: 'Kalos',
-                                color: Color(0xFFEE99AC),
-                              ),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          "Kalos",
-                          style: TextStyle(fontSize: 20.0, color: Colors.white),
-                        ),
-                        style: TextButton.styleFrom(
-                          backgroundColor: Color(0xFFEE99AC),
-                        ),
-                      ),
-                      Container(margin: const EdgeInsets.all(10)),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => PokemonListGenerationPage(
-                                url: 'https://pokeapi.co/api/v2/generation/8',
-                                generation: 'Galar',
-                                color: Color(0xFFF85888),
-                              ),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          "Galar",
-                          style: TextStyle(fontSize: 20.0, color: Colors.white),
-                        ),
-                        style: TextButton.styleFrom(
-                          backgroundColor: Color(0xFFF85888),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
+        child: ScrollableContainer(
+          container: Container(
+            margin: EdgeInsets.only(
+              top: 30
+            ),
+            child: Grid(elements: [...generations()], elementsPerLine: 2),
           ),
         ),
       ),
