@@ -19,7 +19,13 @@ class _TypeBoxState extends State<TypeBox> {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      child: Text(widget.text),
+      child: Text(
+        widget.text,
+        style: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
       onPressed: widget.function,
       style: TextButton.styleFrom(
           backgroundColor: widget.bgColor,

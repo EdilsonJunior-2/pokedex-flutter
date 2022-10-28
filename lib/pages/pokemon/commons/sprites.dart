@@ -30,6 +30,7 @@ class _SpritesState extends State<Sprites> {
                   'Default',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
+                    fontSize: 18
                   ),
                 ),
                 Image.network(
@@ -49,6 +50,7 @@ class _SpritesState extends State<Sprites> {
                   'Shiny',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
+                      fontSize: 18
                   ),
                 ),
                 Image.network(

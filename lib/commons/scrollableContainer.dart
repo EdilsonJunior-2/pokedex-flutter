@@ -11,9 +11,9 @@ class ScrollableContainer extends StatefulWidget {
 class _ScrollableContainerState extends State<ScrollableContainer> {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: 1,
-      itemBuilder:(context, index) => widget.container,
+    return SingleChildScrollView(
+
+      child: widget.container,
     );
   }
 }

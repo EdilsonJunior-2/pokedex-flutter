@@ -9,7 +9,7 @@ extension StringCasingExtension on String {
 
 getFrontDefaultSpriteUrl() {
   return "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon";
-}
+} //TODO: remove this
 
 hasString(String? str) {
   if (str != null) return str;

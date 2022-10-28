@@ -21,12 +21,12 @@ class _PokemonListPageState extends State<PokemonListPage> {
   generations() {
     return regionList.map(
       (region) => Container(
-        width: MediaQuery.of(context).size.width * .4,
+        width: MediaQuery.of(context).size.width * .45,
         height: MediaQuery.of(context).size.height * .2,
         margin: EdgeInsets.only(
-            bottom: MediaQuery.of(context).size.width * .05,
-            left: MediaQuery.of(context).size.width * .05,
-            right: MediaQuery.of(context).size.width * .05),
+            bottom: 10,
+            left: MediaQuery.of(context).size.width * .025,
+            right: MediaQuery.of(context).size.width * .025),
         child: CustomButton(
           text: region.name,
           color: Colors.white,

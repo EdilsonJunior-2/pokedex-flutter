@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/commons/grid.dart';
+import 'package:flutter_radar_chart/flutter_radar_chart.dart';
+import 'package:pokedex/helpers/utils.dart';
 import 'package:pokedex/cubit/stats/stats_model.dart';
 
 class Stats extends StatefulWidget {
@@ -13,33 +14,35 @@ class Stats extends StatefulWidget {
 }
 
 class _StatsState extends State<Stats> {
-  stats() {
-    return widget.statsList.map(
-      (stat) => Container(
-        width: MediaQuery.of(context).size.width * 0.3,
-        margin: EdgeInsets.only(
-            left: MediaQuery.of(context).size.width * .05,
-            right: MediaQuery.of(context).size.width * .05,
-            bottom: 5),
-        child: Text(
-          ("${stat.name}: ${stat.value}"),
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: widget.textColor,
-          ),
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        margin: EdgeInsets.only(
-            top: 10,
-            left: MediaQuery.of(context).size.width * .05,
-            right: MediaQuery.of(context).size.width * .05),
-        child: Grid(elements: [...stats()], elementsPerLine: 2));
+    return  Container(
+      width: MediaQuery.of(context).size.width * .65,
+      height: MediaQuery.of(context).size.width * .65,
+      margin: EdgeInsets.only(bottom: 20),
+      child:
+      RadarChart(
+        ticks: [40, 80, 120, 160, 200],
+        features: [...widget.statsList.map((stat) => stat.name.toTitleCase())],
+        data: [
+          [...widget.statsList.map((stat) => stat.value)]
+        ],
+        graphColors: [Color(0xFFCFCFCF)],
+        featuresTextStyle: TextStyle(
+            color:Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 18
+        ),
+        ticksTextStyle: TextStyle(
+          color: Color(0xFFCFCFCF),
+          fontWeight: FontWeight.bold,
+              fontSize: 12
+        ),
+        axisColor: Color(0xFFCFCFCF),
+        outlineColor: Color(0xFFCFCFCF),
+        sides: 6,
+      ),
+    );
   }
 }
