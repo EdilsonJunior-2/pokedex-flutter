@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:pokedex/cubit/ability/ability_model.dart';
 import 'package:pokedex/cubit/schemas.dart';
+import 'package:pokedex/helpers/utils.dart';
 
 class AbilityRepo {
   AbilityRepo();
@@ -15,6 +16,8 @@ class AbilityRepo {
           (json) => OptionsList(
             name: json['pokemon']['name'],
             url: json['pokemon']['url'],
+            image:
+                '${getFrontDefaultSpriteUrl()}/${getPokemonNumber(json['pokemon']['url'].toString())}.png',
           ),
         ),
       );
@@ -26,7 +29,8 @@ class AbilityRepo {
 
       final ability = AbilityModel(
         name: response.data['name'],
-        description: descriptionList[0]['effect'].toString().replaceAll("\n", " "),
+        description:
+            descriptionList[0]['effect'].toString().replaceAll("\n", " "),
         listOfPokemon: pokemonList,
         generation: response.data['generation']['name'],
       );
