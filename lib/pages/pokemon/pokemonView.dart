@@ -7,10 +7,9 @@ import 'package:pokedex/cubit/state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/pages/pokemon/commons/movesAbilities.dart';
 import 'package:pokedex/pages/pokemon/commons/pokemonTypes.dart';
-import 'package:pokedex/pages/pokemon/commons/sprites.dart';
 import 'package:pokedex/pages/pokemon/commons/stats.dart';
-import 'package:pokedex/helpers/utils.dart';
 import 'package:pokedex/functions.dart';
+import 'package:pokedex/pages/pokemon/commons/varieties.dart';
 
 class Pokemon extends StatefulWidget {
   Pokemon({Key? key, required this.url, required this.name}) : super(key: key);
@@ -83,15 +82,24 @@ class _PokemonState extends State<Pokemon> {
                                   ),
                                 ),
                               ),
-                              Sprites(
-                                  pokemonNumber:
-                                  getPokemonNumber(widget.url).toString()),
                               Container(
                                 width: MediaQuery.of(context).size.width * .9,
                                 margin: EdgeInsets.only(
                                   left: MediaQuery.of(context).size.width * .05,
                                   right:
                                   MediaQuery.of(context).size.width * .05,
+                                  bottom: 30,
+                                ),
+                                child: Varieties(
+                                  varietyList: pokemon.varietyList,
+                                ),
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width * .9,
+                                margin: EdgeInsets.only(
+                                  left: MediaQuery.of(context).size.width * .05,
+                                  right:
+                                      MediaQuery.of(context).size.width * .05,
                                 ),
                                 child: Stats(
                                   statsList: pokemon.stats,

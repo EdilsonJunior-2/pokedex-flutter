@@ -34,7 +34,7 @@ class _SpritesState extends State<Sprites> {
                   ),
                 ),
                 Image.network(
-                  pokemonImageLink + "/" + widget.pokemonNumber + ".png",
+                  pokemonImageLink + "/other/home/" + widget.pokemonNumber + ".png",
                   width: 100,
                 ),
               ],
@@ -54,7 +54,7 @@ class _SpritesState extends State<Sprites> {
                   ),
                 ),
                 Image.network(
-                  pokemonImageLink + "/shiny/" + widget.pokemonNumber + ".png",
+                  pokemonImageLink + "/other/home/shiny/" + widget.pokemonNumber + ".png",
                   width: 100,
                 ),
               ],

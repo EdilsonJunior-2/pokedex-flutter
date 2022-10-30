@@ -3,6 +3,7 @@ import 'package:pokedex/cubit/location_list/location_list_model.dart';
 import 'package:pokedex/cubit/pokemon/pokemon_model.dart';
 import 'package:pokedex/cubit/stats/stats_model.dart';
 import 'package:pokedex/cubit/schemas.dart';
+import 'package:pokedex/helpers/utils.dart';
 
 class PokemonRepo {
   PokemonRepo();
@@ -28,14 +29,25 @@ class PokemonRepo {
       final imageUrl = response2.data['sprites']['other']['official-artwork']
           ['front_default'];
 
-      final spriteUrl = response2.data['sprites']['front_default'];
+      final spriteUrl =
+          response2.data['sprites']['other']['home']['front_default'];
 
-      final spriteUrlShiny = response2.data['sprites']['front_shiny'];
+      final spriteUrlShiny =
+          response2.data['sprites']['other']['home']['front_shiny'];
 
+      final varietyList = List<Variety>.of(
+        temporaryResponse1.data["varieties"].map<Variety>(
+          (pokemon) => Variety(
+            name: pokemon['pokemon']['name'],
+            code: getPokemonNumber(pokemon['pokemon']['url']).toString(),
+          ),
+        ),
+      );
       final flavorTextEntries = response.data["flavor_text_entries"]
           .where((i) => i['language']['name'] == 'en')
           .toList();
       flavorTextEntries.shuffle();
+
       final finalFlavorText =
           flavorTextEntries[0]['flavor_text'].toString().replaceAll("\n", " ");
 
@@ -54,7 +66,8 @@ class PokemonRepo {
       final locationArea = List<LocationListModel>.of(
         response3.data.map<LocationListModel>(
           (json) => LocationListModel(
-            locationName: json['location_area']['name'].toString().replaceAll("-", " "),
+            locationName:
+                json['location_area']['name'].toString().replaceAll("-", " "),
           ),
         ),
       );
@@ -101,11 +114,11 @@ class PokemonRepo {
         spriteUrl: spriteUrl,
         spriteUrlShiny: spriteUrlShiny,
         imageUrl: imageUrl,
+        varietyList: varietyList,
         flavorTextEntry: finalFlavorText,
         stats: stats,
         locationList: locationArea,
       );
-
       return pokemon;
     } catch (e) {
       throw e;

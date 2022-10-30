@@ -68,18 +68,18 @@ class _MovesAbilitiesState extends State<MovesAbilities> {
         ExpansionPanel(
           headerBuilder: (context, isOpen) {
             return Padding(
-              padding: const EdgeInsets.only(
-                  left: 15
-              ),
+              padding: const EdgeInsets.only(left: 15),
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [Text(
-                  "Moves",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
+
+                children: [
+                  Text(
+                    "Moves",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
                   ),
-                )],
+                ],
               ),
             );
           },
@@ -89,9 +89,7 @@ class _MovesAbilitiesState extends State<MovesAbilities> {
         ExpansionPanel(
             headerBuilder: (context, isOpen) {
               return Padding(
-                padding: const EdgeInsets.only(
-                  left: 15
-                ),
+                padding: const EdgeInsets.only(left: 15),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [

@@ -22,3 +22,13 @@ class ListSchema {
   final List<OptionsList> optionsList;
   final Function(int index) function;
 }
+
+class Variety {
+  const Variety({
+    required this.name,
+    required this.code,
+  });
+
+  final String name;
+  final String code;
+}

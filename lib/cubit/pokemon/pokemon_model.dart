@@ -10,6 +10,7 @@ class PokemonModel {
     required this.stats,
     required this.spriteUrl,
     required this.spriteUrlShiny,
+    required this.varietyList,
     required this.imageUrl,
     required this.flavorTextEntry,
     required this.locationList,
@@ -22,6 +23,7 @@ class PokemonModel {
   final List<StatsModel> stats;
   final String spriteUrl;
   final String spriteUrlShiny;
+  final List<Variety> varietyList;
   final String imageUrl;
   final String flavorTextEntry;
   final List<LocationListModel> locationList;
