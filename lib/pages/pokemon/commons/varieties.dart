@@ -40,7 +40,7 @@ class _VarietiesState extends State<Varieties> {
           },
           isExpanded: _isOpen,
           body: Container(
-            height: (widget.varietyList.length * 120),
+            height: (widget.varietyList.length * 220),
             constraints: BoxConstraints(
               maxHeight: 500,
             ),
@@ -61,8 +61,8 @@ class _VarietiesState extends State<Varieties> {
                           child: Text(
                             widget.varietyList[index].name,
                             style: const TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold,
-
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),

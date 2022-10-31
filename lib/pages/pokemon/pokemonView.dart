@@ -10,6 +10,7 @@ import 'package:pokedex/pages/pokemon/commons/pokemonTypes.dart';
 import 'package:pokedex/pages/pokemon/commons/stats.dart';
 import 'package:pokedex/functions.dart';
 import 'package:pokedex/pages/pokemon/commons/varieties.dart';
+import 'package:pokedex/pages/type_colors.dart';
 
 class Pokemon extends StatefulWidget {
   Pokemon({Key? key, required this.url, required this.name}) : super(key: key);
@@ -26,8 +27,9 @@ class _PokemonState extends State<Pokemon> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider<PokemonCubit>(
-        create: (context) =>
-            PokemonCubit(repository: PokemonRepo())..getPokemon(widget.url),
+        create: (context) => PokemonCubit(
+          repository: PokemonRepo(),
+        )..getPokemon(widget.url),
         child: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
@@ -87,11 +89,11 @@ class _PokemonState extends State<Pokemon> {
                                 margin: EdgeInsets.only(
                                   left: MediaQuery.of(context).size.width * .05,
                                   right:
-                                  MediaQuery.of(context).size.width * .05,
-                                  bottom: 30,
+                                      MediaQuery.of(context).size.width * .05,
                                 ),
-                                child: Varieties(
-                                  varietyList: pokemon.varietyList,
+                                child: Stats(
+                                  statsList: pokemon.stats,
+                                  textColor: returnColor(pokemon.types[0].name),
                                 ),
                               ),
                               Container(
@@ -100,10 +102,10 @@ class _PokemonState extends State<Pokemon> {
                                   left: MediaQuery.of(context).size.width * .05,
                                   right:
                                       MediaQuery.of(context).size.width * .05,
+                                  bottom: 30,
                                 ),
-                                child: Stats(
-                                  statsList: pokemon.stats,
-                                  textColor: textColor,
+                                child: Varieties(
+                                  varietyList: pokemon.varietyList,
                                 ),
                               ),
                               Container(

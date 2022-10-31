@@ -21,18 +21,26 @@ class _TypeBoxState extends State<TypeBox> {
     return TextButton(
       child: Text(
         widget.text,
-        style: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-        ),
       ),
       onPressed: widget.function,
       style: TextButton.styleFrom(
-          backgroundColor: widget.bgColor,
-          primary: Colors.white,
-          side: BorderSide(color: Colors.white, width: 1),
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(20)))),
+        textStyle: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+        ),
+        alignment: Alignment.center,
+        backgroundColor: widget.bgColor,
+        primary: Colors.white,
+        side: BorderSide(
+          color: Colors.white,
+          width: 1,
+        ),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(20),
+          ),
+        ),
+      ),
     );
   }
 }

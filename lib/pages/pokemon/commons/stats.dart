@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_radar_chart/flutter_radar_chart.dart';
 import 'package:pokedex/helpers/utils.dart';
 import 'package:pokedex/cubit/stats/stats_model.dart';
+import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class Stats extends StatefulWidget {
   Stats({Key? key, required this.statsList, required this.textColor})
@@ -14,35 +14,73 @@ class Stats extends StatefulWidget {
 }
 
 class _StatsState extends State<Stats> {
-
   @override
   Widget build(BuildContext context) {
-    return  Container(
-      width: MediaQuery.of(context).size.width * .65,
-      height: MediaQuery.of(context).size.width * .65,
-      margin: EdgeInsets.only(bottom: 20),
-      child:
-      RadarChart(
-        ticks: [40, 80, 120, 160, 200],
-        features: [...widget.statsList.map((stat) => stat.name.toTitleCase())],
-        data: [
-          [...widget.statsList.map((stat) => stat.value)]
-        ],
-        graphColors: [Color(0xFFCFCFCF)],
-        featuresTextStyle: TextStyle(
-            color:Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 18
+    return Column(
+      children: [
+        Container(
+          height: MediaQuery.of(context).size.height * .35,
+          child: ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: widget.statsList.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: EdgeInsets.only(
+                    bottom: MediaQuery.of(context).size.height * .02),
+                child: Row(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * .2,
+                     child: Text(widget.statsList[index].name.toTitleCase(),
+                       style: TextStyle(
+                         fontWeight: FontWeight.bold,
+                       ),
+                     ),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width * .1,
+                      margin: EdgeInsets.only(right: MediaQuery.of(context).size.width * .02,
+                          left: MediaQuery.of(context).size.width * .02,
+                      ),
+                      child: Text(
+                        widget.statsList[index].value.toString(),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width * .55,
+                      child: StepProgressIndicator(
+                        totalSteps: 255,
+                        currentStep: widget.statsList[index].value,
+                        size: 8,
+                        padding: 0,
+                        selectedColor: Colors.transparent,
+                        unselectedColor: Colors.transparent,
+                        roundedEdges: Radius.circular(10),
+                        selectedGradientColor: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            Colors.white,
+                            widget.textColor,
+                          ],
+                        ),
+                        unselectedGradientColor: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [Colors.transparent, Colors.transparent],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
         ),
-        ticksTextStyle: TextStyle(
-          color: Color(0xFFCFCFCF),
-          fontWeight: FontWeight.bold,
-              fontSize: 12
-        ),
-        axisColor: Color(0xFFCFCFCF),
-        outlineColor: Color(0xFFCFCFCF),
-        sides: 6,
-      ),
+      ],
     );
   }
 }
