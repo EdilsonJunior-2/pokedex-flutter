@@ -47,7 +47,7 @@ class _AbilityState extends State<Ability> {
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height - 101,
+                    height: MediaQuery.of(context).size.height - 110,
                     child: ScrollableContainer(
                       container: Container(
                         child: Column(children: [
@@ -61,10 +61,9 @@ class _AbilityState extends State<Ability> {
                               ability.description,
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white
-                              ),
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
                             ),
                           ),
                           Padding(
@@ -73,9 +72,10 @@ class _AbilityState extends State<Ability> {
                               right: MediaQuery.of(context).size.width * .05,
                             ),
                             child: PokemonList(
-                                title:
-                                    "Pokemon with ${ability.name.toTitleCase()}",
-                                pokemonList: ability.listOfPokemon),
+                              title:
+                                  "Pokemon with ${ability.name.toTitleCase()}",
+                              pokemonList: ability.listOfPokemon,
+                            ),
                           ),
                         ]),
                       ),

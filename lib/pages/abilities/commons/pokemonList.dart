@@ -40,10 +40,11 @@ class _PokemonListState extends State<PokemonList> {
         Container(
           height: MediaQuery.of(context).size.height * .7,
           child: ListView.builder(
+            padding: EdgeInsets.zero,
             itemCount: widget.pokemonList.length,
             itemBuilder: (context, index) {
               return Padding(
-                padding: const EdgeInsets.only(bottom: 10),
+                padding: EdgeInsets.zero,
                 child: TextButton(
                   onPressed: () {
                     Navigator.push(
