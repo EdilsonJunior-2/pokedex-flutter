@@ -19,7 +19,7 @@ class _StatsState extends State<Stats> {
     return Column(
       children: [
         Container(
-          height: MediaQuery.of(context).size.height * .35,
+          height: 240,
           child: ListView.builder(
             physics: NeverScrollableScrollPhysics(),
             itemCount: widget.statsList.length,
@@ -56,22 +56,17 @@ class _StatsState extends State<Stats> {
                         currentStep: widget.statsList[index].value,
                         size: 8,
                         padding: 0,
-                        selectedColor: Colors.transparent,
-                        unselectedColor: Colors.transparent,
+                        unselectedColor: Colors.black26,
                         roundedEdges: Radius.circular(10),
                         selectedGradientColor: LinearGradient(
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                           colors: [
-                            Colors.white,
+                            widget.textColor,
                             widget.textColor,
                           ],
                         ),
-                        unselectedGradientColor: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [Colors.transparent, Colors.transparent],
-                        ),
+
                       ),
                     ),
                   ],
