@@ -5,11 +5,10 @@ import 'package:pokedex/cubit/pokemon/pokemon_cubit.dart';
 import 'package:pokedex/cubit/pokemon/pokemon_repo.dart';
 import 'package:pokedex/cubit/state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokedex/pages/pokemon/commons/movesAbilities.dart';
+import 'package:pokedex/pages/pokemon/commons/pokemonExpansionPanelItems.dart';
 import 'package:pokedex/pages/pokemon/commons/pokemonTypes.dart';
 import 'package:pokedex/pages/pokemon/commons/stats.dart';
 import 'package:pokedex/functions.dart';
-import 'package:pokedex/pages/pokemon/commons/varieties.dart';
 import 'package:pokedex/pages/type_colors.dart';
 
 class Pokemon extends StatefulWidget {
@@ -55,7 +54,7 @@ class _PokemonState extends State<Pokemon> {
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height - 101,
+                      height: MediaQuery.of(context).size.height - 110,
                       child: ScrollableContainer(
                         container: Container(
                           child: Column(
@@ -71,8 +70,8 @@ class _PokemonState extends State<Pokemon> {
                                   left: MediaQuery.of(context).size.width * .05,
                                   right:
                                       MediaQuery.of(context).size.width * .05,
-                                  top: 30,
-                                  bottom: 30,
+                                  top: 10,
+                                  bottom: 10,
                                 ),
                                 child: Text(
                                   pokemon.flavorTextEntry,
@@ -104,21 +103,10 @@ class _PokemonState extends State<Pokemon> {
                                       MediaQuery.of(context).size.width * .05,
                                   bottom: 30,
                                 ),
-                                child: Varieties(
-                                  varietyList: pokemon.varietyList,
-                                ),
-                              ),
-                              Container(
-                                width: MediaQuery.of(context).size.width * .9,
-                                margin: EdgeInsets.only(
-                                  left: MediaQuery.of(context).size.width * .05,
-                                  right:
-                                      MediaQuery.of(context).size.width * .05,
-                                  bottom: 30,
-                                ),
                                 child: MovesAbilities(
                                   movesList: pokemon.moves,
                                   abilitiesList: pokemon.abilities,
+                                  varietyList: pokemon.varietyList,
                                 ),
                               ),
                             ],

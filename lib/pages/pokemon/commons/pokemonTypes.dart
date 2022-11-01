@@ -16,7 +16,7 @@ class _PokemonTypesState extends State<PokemonTypes> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: (widget.typeList.length * 42),
+      height: (widget.typeList.length * 40),
       width: MediaQuery.of(context).size.width * 0.3,
       margin: EdgeInsets.only(
         top: 20,
@@ -26,7 +26,7 @@ class _PokemonTypesState extends State<PokemonTypes> {
         itemCount: widget.typeList.length,
         padding: EdgeInsets.all(0),
         itemBuilder: (context, index) => Container(
-            height: 30,
+            height: 35,
             margin: EdgeInsets.only(bottom: 10),
             child: TypeBox(
               bgColor: returnColor(
