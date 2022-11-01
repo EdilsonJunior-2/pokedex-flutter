@@ -4,9 +4,12 @@ import 'package:pokedex/pages/home.dart';
 import 'package:pokedex/pages/abilities/abilities_list.dart';
 import 'package:pokedex/pages/pokemon/selectGenerationView.dart';
 import 'package:pokedex/pages/types/type_list.dart';
+import 'package:flutter/services.dart';
 
 void main() {
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((value) => runApp(MyApp()));
 }
 
 class MyApp extends StatefulWidget {
